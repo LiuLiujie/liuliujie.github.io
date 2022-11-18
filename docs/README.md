@@ -13,6 +13,5 @@ features:
 - title: Life
   details: Records every day
   link: /life
-
-  footer: MIT Licensed | Copyright © 2022 Googuy
+footer: MIT Licensed | Copyright © 2022 Googuy
 ---
