@@ -1,0 +1,17 @@
+{
+  "name": "liuliujie.github.io",
+  "version": "1.0.0",
+  "description": "Googuy's blog",
+  "main": "index.js",
+  "repository": "git@github.com:LiuLiujie/liuliujie.github.io.git",
+  "author": "Yujie Liu <yujie.liu.home@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "vuepress": "^1.9.7"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  }
+}
