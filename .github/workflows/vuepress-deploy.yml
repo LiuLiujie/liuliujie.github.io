@@ -16,5 +16,5 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.GITHUBIO_TOKEN }}
           TARGET_REPO: LiuLiujie/liuliujie.github.io
           TARGET_BRANCH: main
-          BUILD_SCRIPT: yarn && yarn build
+          BUILD_SCRIPT: yarn && yarn docs:build
           BUILD_DIR: docs/.vuepress/dist/
