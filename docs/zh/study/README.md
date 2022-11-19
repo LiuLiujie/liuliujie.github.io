@@ -4,7 +4,7 @@ pageComponent:
     data:
         path: study
         imgUrl: /img/web.png
-description: My Study
+description: 我的学习
 title: Study
 date: 2022-11-19 00:14:00
 permalink: /study/

@@ -5,13 +5,20 @@ heroText: Googuy's blog
 tagline: Hi! Googuy here!
 actionText: About me
 actionLink: /aboutme
-features:
-- title: Study
-  details: What I study and research
-- title: Projects
-  details: The projects I take part in
-- title: Life
-  details: Records every day
-  link: /life
-footer: MIT Licensed | Copyright © 2022 Googuy
+footer: Copyright © 2022 Googuy
 ---
+
+<div class="features">
+  <a class="feature" href="/study">
+    <h2>Study</h2>
+    <p>What I study and research</p>
+  </a>
+  <a class="feature" href="/projects">
+    <h2>Projects</h2>
+    <p>The projects I take part in</p>
+  </a>
+  <a class="feature" href="/life">
+    <h2>Life</h2>
+    <p>Records every day</p>
+  </a>
+</div>
