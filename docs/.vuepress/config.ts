@@ -1,5 +1,6 @@
 import { defineConfig } from "vuepress/config";
 import {NavItems4EN, NavItems4ZH} from "./nav";
+import {Sidebar4EN, Sidebar4ZH} from "./sidebar";
 
 export default defineConfig({
     title: "Googuy's blog",
@@ -14,6 +15,7 @@ export default defineConfig({
                 ariaLabel: 'Select language',
                 lastUpdated: 'Last Updated',
                 nav: NavItems4EN,
+                sidebar: Sidebar4EN
             },
             '/zh/':{
                 label: '简体中文',
@@ -21,6 +23,7 @@ export default defineConfig({
                 ariaLabel: '选择语言',
                 lastUpdated: '上次更新',
                 nav: NavItems4ZH,
+                sidebar: Sidebar4ZH
             }
         }
     },
