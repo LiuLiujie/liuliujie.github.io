@@ -5,7 +5,7 @@ heroText: Googuy 的博客
 tagline: Hi! Googuy here!
 actionText: 关于我
 actionLink: /zh/aboutme
-footer: MIT Licensed | Copyright © 2022 Googuy
+footer: Copyright © 2022 Googuy
 ---
 
 <div class="features">
