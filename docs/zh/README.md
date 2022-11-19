@@ -2,7 +2,7 @@
 home: true
 #heroImage: /hero.png
 heroText: Googuy 的博客
-tagline: Hi! Googuy here!
+tagline: Googuy 是个好人
 actionText: 关于我
 actionLink: /zh/aboutme
 footer: Copyright © 2022 Googuy
@@ -22,3 +22,9 @@ footer: Copyright © 2022 Googuy
     <p>记录生活的一点一滴</p>
   </a>
 </div>
+
+::: tip
+语言选择小提示:  
+大多数博客会以英文写作, 部分会被翻译为中文. 如果是中文语境缺失的资料我会尽量完整翻译.  
+当然, 生活中的日记会以中文写作. (正经人谁写日记啊? :P) 
+:::
