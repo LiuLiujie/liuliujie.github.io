@@ -14,8 +14,14 @@ export const sidebarStudy: SidebarConfigArray = [
         title: "Operation",
         collapsable: true,
         children: [
-            'docker',
-            'ubuntu'
+            'Docker',
+            'Ubuntu'
+        ]
+    },{
+        title: "Others",
+        collapsable: true,
+        children: [
+            'SemanticVersioning'
         ]
     }
 ]
