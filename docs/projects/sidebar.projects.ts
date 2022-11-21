@@ -3,6 +3,18 @@ import { SidebarConfigArray } from "vuepress/config"
 export const sidebarProjects: SidebarConfigArray = [
     '',
     {
+        title: "CI/CD",
+        collapsable: true,
+        children: [
+            'DockerImageBuilder.md'
+        ]
+    },
+    {
+        title: "Cloud native",
+        collapsable: true,
+        children: []
+    },
+    {
         title: "Web service",
         collapsable: true,
         children: []
@@ -10,10 +22,6 @@ export const sidebarProjects: SidebarConfigArray = [
         title: "Semantic web",
         collapsable: true,
         children: []
-    },{
-        title: "Cloud native",
-        collapsable: true,
-        children: []
-    }
+    },
 ]
 
