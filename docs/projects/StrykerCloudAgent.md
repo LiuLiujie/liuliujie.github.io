@@ -1,6 +1,11 @@
 ---
 sidebarDepth: 2
+tags:
+- Stryker
+- Cloud
+- Testing
 ---
+
 # Stryker Cloud Agent
 This project is mainly about transfer a mutation testing tool called Stryker to a cloud native one. The basic idea is using a cloud runner (an agent) to run the mutants parallel in the cloud. In this way, intuitively, if all the mutants can be run in parallel in the cloud, the whole testing process can be speed up.
 
