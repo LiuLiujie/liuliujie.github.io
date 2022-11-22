@@ -12,7 +12,9 @@ export const sidebarProjects: SidebarConfigArray = [
     {
         title: "Cloud native",
         collapsable: true,
-        children: []
+        children: [
+            'StrykerCloudAgent'
+        ]
     },
     {
         title: "Web service",
