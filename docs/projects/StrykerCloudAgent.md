@@ -82,19 +82,30 @@ The basic idea looks not bad, but we still need to figure out some key points to
 ### Runner
 
 - Flavor dependent
+  - StrykerJS, StrykerC#, StrykerJVM....Even more system dependencies or customized environment.
   - If the client need more features that not supported by the public runner, they need to register the runner themselves.
+  - Tag mechanism will be introduced to decide which runner can handle the corresponding job.
+  
 - Single direct message
-  - Since the runner may hide inside an internal network and hard to find by an orchestrator with public IP, in this case, typically we have two solutions
+  - Since the runner may hide inside an internal network and hard to find by an orchestrator with public IP, in this case, typically we have two solutions:
     - Long polling by the runner (GitHub Actions Runner and GitLab Runner)
     - Includes everything in heartbeat request and response
-  
+  - We choose the heartbeat request/response solution because:
+    - Since the runner is flavour dependent, and we allow our customers register their own runner to our orchestrator we can image that there will be quite a lot 'less popular' runners staying idle all the time. We don't want to let these idle runners occupie too much long polling resources.
+    - We don't need to provide a real time feedback like what the GitHub/GitLab runner do.
+    
+
 
 
 ## My work
 
 ### Keep track of the runner 
 
-See issue [here](https://github.com/ISEP-Mutator-Orchestrator/mutator-orchestrator/issues/3). (A private repo recently, might be OpenSource future)
+- Register and deregister of the runner
+- Store the runner
+- Handle the runner death
+
+For details, see issue [here](https://github.com/ISEP-Mutator-Orchestrator/mutator-orchestrator/issues/3). (A private repo recently, might be OpenSource future)
 
 
 
