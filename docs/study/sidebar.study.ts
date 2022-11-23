@@ -15,7 +15,8 @@ export const sidebarStudy: SidebarConfigArray = [
         collapsable: true,
         children: [
             'Docker',
-            'Ubuntu'
+            'Ubuntu',
+            'KEDA'
         ]
     },{
         title: "Others",
