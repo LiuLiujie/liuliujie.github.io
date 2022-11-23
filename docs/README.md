@@ -5,7 +5,7 @@ heroText: Googuy's blog
 tagline: Hi! Googuy here!
 actionText: About me
 actionLink: /aboutme/
-footer: Copyright © 2022 Googuy
+footer: A gift for my 23 | Copyright © 2022 Googuy
 ---
 
 
