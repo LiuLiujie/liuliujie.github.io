@@ -1,5 +1,4 @@
 ---
-sidebarDepth: 2
 tags:
 - Stryker
 - Cloud
@@ -28,7 +27,7 @@ The basic idea looks not bad, but we still need to figure out some key points to
    - The admin may want to manually start, pause and close a runner.
 ### Requirements extracted
 
-- The solution should be able to be deployed by ourselves (public cloud) and our customers (private cloud), or in a hybrid format which the company register their own private runner to our public orchestrator (hybrid cloud).
+- The solution should be able to be deployed by ourselves (public cloud) and our customers (private cloud), or in a hybrid format which our customers register their own private runner to our public orchestrator (hybrid cloud).
 
 - Orchestrator
   - Communicate with the client
@@ -36,7 +35,15 @@ The basic idea looks not bad, but we still need to figure out some key points to
   - Keep track of the runners
   - Collect the results and send a feedback to the client
 - Runner
-  - 
+  - Support both dynamic and static scaling
+  - Should support multiple computer architecture, at least x64 and ARM64
+  - Should allow our customers deploy on their own machine and register to public orchestrator.
+- Performance features (from Nico)
+  - Infinite loop (hit counter)
+  - Timeout measurement
+  - Test filtering
+  - Mutant activation (static vs runtime)
+
 
 ### My ideas
 
@@ -52,21 +59,53 @@ The basic idea looks not bad, but we still need to figure out some key points to
    - No need to modify the Striker's source code, only specify which test case/file the Stryker should run.
    - Cons: I forget..... Maybe hard to generate the configure files?
 
-## The solution we finally choose
+## The solution we agree on
 
 ### Limit the scope
 
 - Forget the dependencies, uploading the whole executable project to the cloud
 - Focus on the orchestrator, only poc of runner and the client.
 
+### General decision
+
+- The whole architecture should be tool independent, which means it will not against other mutation testing tools. The orchestrator should at least be stryker flavour independent. The runner should be flavour dependent, which means different stryker flavour may have different runners.
+
+### Client
+
+- The client is responsible for install the dependencies and compile the code.
+- The client-side will zip the project and upload to the orchestrator.
+
 ### Orchestrator
+
+- Tech stack: NestJS + Redis
 
 ### Runner
 
 - Flavor dependent
   - If the client need more features that not supported by the public runner, they need to register the runner themselves.
+- Single direct message
+  - Since the runner may hide inside an internal network and hard to find by an orchestrator with public IP, in this case, typically we have two solutions
+    - Long polling by the runner (GitHub Actions Runner and GitLab Runner)
+    - Includes everything in heartbeat request and response
+  
 
 
-## My jobs
+## My work
 
 ### Keep track of the runner 
+
+See issue [here](https://github.com/ISEP-Mutator-Orchestrator/mutator-orchestrator/issues/3). (A private repo recently, might be OpenSource future)
+
+
+
+## Personal Reflection
+
+### Project Management
+
+Honestly speaking I have no idea what I am going to do even I have enough time to work on this project. It seems we didn't make a goal or blueprint for what we are going to make. I proposed using Jira to manage the project so that we can set some epic and trace our steps towards the epic, but I got refused. 
+
+Then we are going to use GitHub workflow, but I was a little surprise we only use issue to track the project instead of the Project functions GitHub offers. The GitHub Issue is more or less a fine grain management like Jira Task or Bug, which is not suitable for setting a big goal or designing a specific function/module. This is also my fault because I didn't say anything to this. I should speak out 
+
+### Typescript is good
+
+This is the first time I met with Typescript, and the second time is this blog. It's nice to learn a string typing language for my frontend skill.
