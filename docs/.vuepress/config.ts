@@ -1,35 +1,45 @@
-import { defineConfig } from "vuepress/config";
+import { defaultTheme } from '@vuepress/theme-default'
 import {NavItems4EN, NavItems4ZH} from "./nav";
 import {Sidebar4EN, Sidebar4ZH} from "./sidebar";
 
-export default defineConfig({
+export default {
     title: "Googuy's blog",
     description: "Googuy's blog",
-    themeConfig:{
+    theme: defaultTheme({
         sidebarDepth: 2,
         repo: "https://github.com/LiuLiujie/liuliujie.github.io",
         locales:{
             '/':{
-                label: 'English',
-                selectText: 'Languages',
-                ariaLabel: 'Select language',
-                lastUpdated: 'Last Updated',
-                nav: NavItems4EN,
-                sidebar: Sidebar4EN
+                navbar: NavItems4EN,
+                sidebar: Sidebar4EN,
+                editLink: false,
+                contributors: false
             },
             '/zh/':{
-                label: '简体中文',
-                selectText: '选择语言',
-                ariaLabel: '选择语言',
-                lastUpdated: '上次更新',
-                nav: NavItems4ZH,
-                sidebar: Sidebar4ZH
+                navbar: NavItems4ZH,
+                sidebar: Sidebar4ZH,
+                editLink: false,
+                contributors: false,
+                selectLanguageName: '简体中文',
+                selectLanguageText: '选择语言',
+                selectLanguageAriaLabel: '选择语言',
+                lastUpdatedText: '上次更新',
+                tip: '提示',
+                warning: '注意',
+                danger: '警告',
+                notFound: [
+                    '这里什么都没有',
+                    '我们怎么到这来了？',
+                    '这是一个 404 页面',
+                    '看起来我们进入了错误的链接',
+                ],
+                backToHome: '返回首页',
+                openInNewWindow: '在新窗口打开',
+                toggleColorMode: '切换颜色模式',
+                toggleSidebar: '切换侧边栏',
             }
         }
-    },
-    markdown: {
-        lineNumbers: true
-    },
+    }),
     locales:{
         '/':{
             lang: 'en-US',
@@ -42,4 +52,4 @@ export default defineConfig({
             description: 'Googuy 的博客'
         }
     }
-});
+}

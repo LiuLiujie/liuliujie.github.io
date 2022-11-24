@@ -1,18 +1,19 @@
-import { SidebarConfigArray } from "vuepress/config"
+import {SidebarConfigArray} from "@vuepress/theme-default/lib/shared/nav";
+
 
 export const sidebarStudy4ZH: SidebarConfigArray = [
-    '',
+    'README.md',
     {
-        title: "前端",
-        collapsable: true,
+        text: "前端",
+        collapsible: true,
         children: []
     },{
-        title: "后端",
-        collapsable: true,
+        text: "后端",
+        collapsible: true,
         children: []
     },{
-        title: "运维",
-        collapsable: true,
+        text: "运维",
+        collapsible: true,
         children: [
             'docker'
         ]

@@ -1,18 +1,19 @@
-import { SidebarConfigArray } from "vuepress/config"
+import {SidebarConfigArray} from "@vuepress/theme-default/lib/shared/nav";
+
 
 export const sidebarProjects4ZH: SidebarConfigArray = [
-    '',
+    'README.md',
     {
-        title: "Web 服务",
-        collapsable: true,
+        text: "Web 服务",
+        collapsible: true,
         children: []
     },{
-        title: "语义网(Semantic web)",
-        collapsable: true,
+        text: "语义网(Semantic web)",
+        collapsible: true,
         children: []
     },{
-        title: "云原生",
-        collapsable: true,
+        text: "云原生",
+        collapsible: true,
         children: []
     }
 ]

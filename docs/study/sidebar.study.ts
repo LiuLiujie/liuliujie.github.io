@@ -1,26 +1,26 @@
-import { SidebarConfigArray } from "vuepress/config"
+import {SidebarConfigArray} from "@vuepress/theme-default/lib/shared/nav";
 
 export const sidebarStudy: SidebarConfigArray = [
-    '',
+    'README.md,',
     {
-        title: "Frontend",
-        collapsable: true,
+        text: "Frontend",
+        collapsible: true,
         children: []
     },{
-        title: "Backend",
-        collapsable: true,
+        text: "Backend",
+        collapsible: true,
         children: []
     },{
-        title: "Operation",
-        collapsable: true,
+        text: "Operation",
+        collapsible: true,
         children: [
             'Docker',
             'Ubuntu',
             'KEDA'
         ]
     },{
-        title: "Others",
-        collapsable: true,
+        text: "Others",
+        collapsible: true,
         children: [
             'SemanticVersioning'
         ]

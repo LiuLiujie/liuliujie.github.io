@@ -1,6 +1,6 @@
-import { NavItem } from "vuepress/config";
+import type { NavbarConfig } from '@vuepress/theme-default'
 
-export const NavItems4EN: NavItem[] = [
+export const NavItems4EN: NavbarConfig = [
     { text: "Home", link: '/' },
     { text: "Study", link: '/study/'},
     { text: "Projects", link: '/projects/'},
@@ -8,7 +8,7 @@ export const NavItems4EN: NavItem[] = [
     { text: "About me", link: '/aboutme/'}
 ];
 
-export const NavItems4ZH: NavItem[] = [
+export const NavItems4ZH: NavbarConfig = [
     { text: "首页", link: '/zh/' },
     { text: "学习", link: '/zh/study/'},
     { text: "项目", link: '/zh/projects/'},

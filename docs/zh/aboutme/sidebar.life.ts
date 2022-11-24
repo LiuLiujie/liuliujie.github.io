@@ -1,14 +1,15 @@
-import { SidebarConfigArray } from "vuepress/config"
+import {SidebarConfigArray} from "@vuepress/theme-default/lib/shared/nav";
+
 
 export const sidebarLife4ZH: SidebarConfigArray = [
-    '',
+    'README.md',
     {
-        title: "荷兰留学",
-        collapsable: true,
+        text: "荷兰留学",
+        collapsible: true,
         children: []
     },{
-        title: "日记",
-        collapsable: true,
+        text: "日记",
+        collapsible: true,
         children: []
     }
 ]

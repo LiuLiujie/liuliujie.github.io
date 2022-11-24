@@ -1,28 +1,28 @@
-import { SidebarConfigArray } from "vuepress/config"
+import {SidebarConfigArray} from "@vuepress/theme-default/lib/shared/nav";
 
 export const sidebarProjects: SidebarConfigArray = [
-    '',
+    'README.md',
     {
-        title: "CI/CD",
-        collapsable: true,
+        text: "CI/CD",
+        collapsible: true,
         children: [
-            'DockerImageBuilder.md'
+            'DockerImageBuilder'
         ]
     },
     {
-        title: "Cloud native",
-        collapsable: true,
+        text: "Cloud native",
+        collapsible: true,
         children: [
             'StrykerCloudAgent'
         ]
     },
     {
-        title: "Web service",
-        collapsable: true,
+        text: "Web service",
+        collapsible: true,
         children: []
     },{
-        title: "Semantic web",
-        collapsable: true,
+        text: "Semantic web",
+        collapsible: true,
         children: []
     },
 ]
