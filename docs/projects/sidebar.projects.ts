@@ -13,7 +13,8 @@ export const sidebarProjects: SidebarConfigArray = [
         text: "Cloud native",
         collapsible: true,
         children: [
-            'StrykerCloudAgent'
+            'StrykerCloudAgent',
+            'CloudOptimisation'
         ]
     },
     {
