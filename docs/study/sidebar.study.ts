@@ -1,7 +1,7 @@
 import {SidebarConfigArray} from "@vuepress/theme-default/lib/shared/nav";
 
 export const sidebarStudy: SidebarConfigArray = [
-    'README.md,',
+    'README.md',
     {
         text: "Frontend",
         collapsible: true,
@@ -22,7 +22,8 @@ export const sidebarStudy: SidebarConfigArray = [
         text: "Others",
         collapsible: true,
         children: [
-            'SemanticVersioning'
+            'SemanticVersioning',
+            'GPGPU'
         ]
     }
 ]
