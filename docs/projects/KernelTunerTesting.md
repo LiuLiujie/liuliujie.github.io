@@ -108,3 +108,39 @@ User's jobs
 - Write the test cases in Python
 - Trigger run_kernel to execute the test cases
 
+
+
+## Testing GPU code
+
+Steps without framework:
+
+1. Decide on some input data
+
+2. Compile the GPU code (if not compiled already)
+
+3. Allocate GPU memory
+
+4. Copy input data to the GPU
+
+5. Setup thread block and grid dimensions
+
+6. Call the kernel
+
+7. Copy data back to host memory
+
+8. Free GPU memory
+
+9. Check the behavior of the system under test
+
+Kernel Tuner can do 2-8 steps.
+
+*[Testing device functions](https://blog.esciencecenter.nl/writing-testable-gpu-code-23bbda3a5d62)? What is device functions? [Answer](https://stackoverflow.com/questions/12373940/difference-between-global-and-device-functions). How to test? Maybe need to figure out later.
+
+### Design test case
+
+The range of input data may influence the output. We really need to consider whether it will make the test useless when mutation happens. 
+
+- All mutants will easily fail the test, but there might still a lot of bugs in the code.
+- All mutants will pass the test, it may because the output variance is not sufficient.
+
+## [book] The CUDA Handbook
