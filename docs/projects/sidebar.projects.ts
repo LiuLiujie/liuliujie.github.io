@@ -22,9 +22,11 @@ export const sidebarProjects: SidebarConfigArray = [
         collapsible: true,
         children: []
     },{
-        text: "Semantic web",
+        text: "Date Science",
         collapsible: true,
-        children: []
+        children: [
+            'KernelTunerTesting'
+        ]
     },
 ]
 
