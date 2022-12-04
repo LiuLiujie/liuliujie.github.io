@@ -1,28 +1,59 @@
 # Kernel Tuner Testing Research
 
-**Goal**: how existing test theory can be used and adapted to the specific use case of GPU kernels.
+**Goal**: How existing test theory can be used and adapted to the specific use case of GPU kernels.
 
-- What would be useful coverage criteria to estimate the quality of test suites
-- The generation of test cases based on either code inspection or user-defined properties.
+Two directions
 
-**My inspiration**: use mutation testing to estimate the quality of test suites. Basic of mutation testing: change a bit in the source code and see if the mutants can survive.
+- What would be useful **coverage criteria** to estimate the quality of test suites. ✅
+- The **generation of test cases** based on either code inspection or user-defined properties.
+
+**My inspiration**:
+
+Use mutation testing to estimate the quality of test suites.
+
+Basic of mutation testing: change a bit in the source code and see if the mutants can survive.
 
 **My concerns**:
 
+- Is it really feasible/meaningful to introduce mutation testing into GPU programming
+
+  - From [here](#[Blog]Testing GPU code) we may need to figure out if the mutants will pass/fail the test cases too easy. In other words, in which application scenario the mutation testing is useful in GPU programming.
+
 - Abstraction level for the mutation testing tool
-  - Directly written in C/C++: had better not
-  - As a 'plugin' for kernel tuner: 
-    - The process is like:
-      - Define [mutators](https://stryker-mutator.io/docs/mutation-testing-elements/supported-mutators/) and patterns for CUDA/OpenCL
-      - A dry run is needed to see if the code can be compiled and started successfully.
-      - Run all the mutants and give a report.
-    - Pros: 
-      - Can be done under Kernel Tuner's architecture for dry run and testing framework.
-      - Higher abstraction level: interact with Kernel Tuner and PyCUDA/PYOpenCL.
-      - Partially use python's sophisticated testing tools is possible
-  - An independent tool focus on CUDA/OpenCL mutators
-    - A whole (mutation) testing framework is much more work (must sharply limit the scope)
-    - More freedom in implementation.
+
+  1. Directly written in C/C++: Had better not....
+
+  2. As a 'plugin' for kernel tuner:  
+
+     The process is like:
+
+     - Design/define [mutators](https://stryker-mutator.io/docs/mutation-testing-elements/supported-mutators/) and patterns for CUDA/OpenCL 
+
+     - A dry run is needed to see if the code can be compiled and started successfully.
+
+     - Run all the mutants and give a report.
+
+     - Pros: 
+       - Can be done under Kernel Tuner's architecture for dry run and testing framework.
+       - Higher abstraction level: interact with Kernel Tuner and PyCUDA/PYOpenCL.
+       - Partially use python's sophisticated testing tools is possible.
+     - Cons:
+       - Highly depends on the Kernel Tuner, which may limit the development and usage
+
+  3. An independent tool focus on CUDA/OpenCL mutators. A [paper](#[Paper] Applying Mutation Testing to GPU Programs) from TUD.
+
+     - A whole (mutation) testing framework is much more work (must sharply limit the scope)
+       - limit the mutators, limit the language. (CUDA/OpenCL)
+
+     - More freedom in implementation.
+
+- How to measure survival/kill
+
+  - The output of the program
+  - The performance of the execution. 
+    - Test cases for performance?
+    - The [paper](#[Paper] Applying Mutation Testing to GPU Programs) also find this problem.
+
 
 ## [Paper] Kernel Tuner: A search-optimizing GPU code auto-tuner
 
@@ -110,7 +141,7 @@ User's jobs
 
 
 
-## Testing GPU code
+## [Blog]Testing GPU code
 
 Steps without framework:
 
