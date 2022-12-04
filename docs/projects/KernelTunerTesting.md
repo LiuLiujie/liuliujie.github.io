@@ -17,7 +17,7 @@ Basic of mutation testing: change a bit in the source code and see if the mutant
 
 - Is it really feasible/meaningful to introduce mutation testing into GPU programming
 
-  - From [here](#[Blog]Testing GPU code) we may need to figure out if the mutants will pass/fail the test cases too easy. In other words, in which application scenario the mutation testing is useful in GPU programming.
+  - From [here](#blog-testing-gpu-code) we may need to figure out if the mutants will pass/fail the test cases too easy. In other words, in which application scenario the mutation testing is useful in GPU programming.
 
 - Abstraction level for the mutation testing tool
 
@@ -40,7 +40,7 @@ Basic of mutation testing: change a bit in the source code and see if the mutant
      - Cons:
        - Highly depends on the Kernel Tuner, which may limit the development and usage
 
-  3. An independent tool focus on CUDA/OpenCL mutators. A [paper](#[Paper] Applying Mutation Testing to GPU Programs) from TUD.
+  3. An independent tool focus on CUDA/OpenCL mutators. A [paper](#paper-applying-mutation-testing-to-gpu-programs) from TUD.
 
      - A whole (mutation) testing framework is much more work (must sharply limit the scope)
        - limit the mutators, limit the language. (CUDA/OpenCL)
