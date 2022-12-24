@@ -5,7 +5,7 @@ heroText: Googuy 的博客
 tagline: Googuy 是 Good guy
 actionText: 关于我
 actionLink: /zh/aboutme/
-footer: Copyright © 2022 Googuy
+footer: 送给自己的 23 岁礼物 | Copyright © 2022 Googuy
 ---
 
 <div class="features">
