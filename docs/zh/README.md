@@ -2,7 +2,7 @@
 home: true
 #heroImage: /hero.png
 heroText: Googuy 的博客
-tagline: Googuy 是个好人
+tagline: Googuy 是 Good guy
 actionText: 关于我
 actionLink: /zh/aboutme/
 footer: Copyright © 2022 Googuy

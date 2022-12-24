@@ -19,11 +19,16 @@ export const sidebarStudy: SidebarConfigArray = [
             'KEDA'
         ]
     },{
+        text: "Date Science",
+        collapsible: true,
+        children: [
+            'GPGPU'
+        ]
+    },{
         text: "Others",
         collapsible: true,
         children: [
-            'SemanticVersioning',
-            'GPGPU'
+            'SemanticVersioning'
         ]
     }
 ]

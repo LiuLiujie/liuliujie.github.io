@@ -1,5 +1,11 @@
 # Ubuntu
 
+## CLI
+
+### Run ssh in background
+
+`ctrl + z` to put the job into background, and use `bg` to run it
+
 ## Network
 ### WLAN
 Connect to network (Someone told me the following method is *WRONG*, but ie works to me):  
