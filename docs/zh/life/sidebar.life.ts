@@ -7,7 +7,9 @@ export const sidebarLife4ZH: SidebarConfigArray = [
     {
         text: "我的随笔",
         collapsible: true,
-        children: []
+        children: [
+            'Italia'
+        ]
     }
 ]
 
