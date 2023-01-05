@@ -1,0 +1,1 @@
+import{_ as o,o as t,c as a,a as e,b as c}from"./app.c9751d6c.js";const n={},s=e("h1",{id:"googuy",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#googuy","aria-hidden":"true"},"#"),c(" Googuy")],-1),r=e("p",null,'"You are a good guy, but ..."',-1),_=[s,r];function d(i,u){return t(),a("div",null,_)}const h=o(n,[["render",d],["__file","index.html.vue"]]);export{h as default};

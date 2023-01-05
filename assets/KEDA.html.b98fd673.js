@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-8cafb9fa","path":"/study/KEDA.html","title":"KEDA: Kubernetes Event-driven Autoscaling","lang":"en-US","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1669221727000,"contributors":[{"name":"Yujie Liu","email":"yujie.liu.home@gmail.com","commits":1}]},"filePathRelative":"study/KEDA.md"}');export{e as data};

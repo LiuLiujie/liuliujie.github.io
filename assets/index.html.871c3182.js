@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-372ea4e3","path":"/aboutme/","title":"Googuy","lang":"en-US","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1668940643000,"contributors":[{"name":"Yujie Liu","email":"yujie.liu.home@gmail.com","commits":3}]},"filePathRelative":"aboutme/README.md"}');export{e as data};
