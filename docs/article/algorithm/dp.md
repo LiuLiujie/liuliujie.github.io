@@ -1,12 +1,13 @@
 ---
 category: Computer Science
-description: "This blog records the solutions I made for the Dynamic Programming questions from Leetcode"
 tag:
 - Algorithms
 - Leetcode
 - Dynamic Programming
 ---
 # Dynamic Programming
+
+This blog records the solutions I made for the Dynamic Programming questions from Leetcode.
 
 ## Fibonacci
 
