@@ -48,7 +48,7 @@ export default hopeTheme({
       //Facebook: "https://example.com",
       //Flipboard: "https://example.com",
       //Gitee: "https://example.com",
-      //GitHub: "https://example.com",
+      GitHub: "https://github.com/LiuLiujie",
       //Gitlab: "https://example.com",
       Gmail: "mailto:yujie.liu.public@gmail.com",
       //Instagram: "https://example.com",
@@ -74,7 +74,7 @@ export default hopeTheme({
 
   encrypt: {
     config: {
-      //"/demo/encrypt.html": ["1234"],
+      "/life/diaries/": ["1219"],
     },
   },
 
