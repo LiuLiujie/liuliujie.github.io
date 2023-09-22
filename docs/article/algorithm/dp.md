@@ -8,7 +8,9 @@ tag:
 ---
 # Dynamic Programming
 
-## [Climbing Stairs](https://leetcode.cn/problems/climbing-stairs/)
+## Fibonacci
+
+### 70. [Climbing Stairs](https://leetcode.cn/problems/climbing-stairs/)
 
 You are climbing a staircase. It takes `n` steps to reach the top.
 
@@ -39,7 +41,7 @@ Explanation: There are three ways to climb to the top.
 
 - `1 <= n <= 45`
 
-### My Solution
+#### My Solution
 
 We find that the ways we used to reach `n` only depends on the ways to `n-1` and `n-2`.  So we can conclude that `f(n) = f(n-1) + f(n-2)`. We use `p` to represent `n-2` steps and `q` for `n-1` steps. So we can get:
 
@@ -59,7 +61,9 @@ public:
 };
 ```
 
-## [Fibonacci Number](https://leetcode.cn/problems/fibonacci-number/)
+
+
+### 509. [Fibonacci Number](https://leetcode.cn/problems/fibonacci-number/)
 
 The **Fibonacci numbers**, commonly denoted `F(n)` form a sequence, called the **Fibonacci sequence**, such that each number is the sum of the two preceding ones, starting from `0` and `1`. That is,
 
@@ -98,7 +102,7 @@ Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
 
 - `0 <= n <= 30`
 
-### My Solution
+#### My Solution
 
 The same logic as the above question.
 
@@ -122,7 +126,7 @@ public:
 
 
 
-## [N-th Tribonacci Number](https://leetcode.cn/problems/n-th-tribonacci-number/)
+### 1137. [N-th Tribonacci Number](https://leetcode.cn/problems/n-th-tribonacci-number/)
 
 The Tribonacci sequence Tn is defined as follows: 
 
@@ -152,7 +156,7 @@ Output: 1389537
 - `0 <= n <= 37`
 - The answer is guaranteed to fit within a 32-bit integer, ie. `answer <= 2^31 - 1`.
 
-### My Solution
+#### My Solution
 
 The same logic as the first question.
 
@@ -179,7 +183,9 @@ public:
 };
 ```
 
-## [Min Cost Climbing Stairs](https://leetcode.cn/problems/min-cost-climbing-stairs/)
+
+
+### T746. [Min Cost Climbing Stairs](https://leetcode.cn/problems/min-cost-climbing-stairs/)
 
 You are given an integer array `cost` where `cost[i]` is the cost of $I^{th}$ step on a staircase. Once you pay the cost, you can either climb one or two steps.
 
@@ -217,7 +223,7 @@ The total cost is 6.
 - `2 <= cost.length <= 1000`
 - `0 <= cost[i] <= 999`
 
-### My Solution
+#### My Solution
 
 f(n) =  min(f(n-1), f(n-2)) + cost[n]
 
@@ -244,7 +250,7 @@ public:
 
 
 
-## [House Robber](https://leetcode.cn/problems/house-robber/)
+### T198. [House Robber](https://leetcode.cn/problems/house-robber/)
 
 You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and **it will automatically contact the police if two adjacent houses were broken into on the same night**.
 
@@ -273,7 +279,7 @@ Total amount you can rob = 2 + 9 + 1 = 12.
 - `1 <= nums.length <= 100`
 - `0 <= nums[i] <= 400`
 
-### My Solution
+#### My Solution
 
 The robber must rob the house that either is separated by one, or separated by two
 
@@ -301,3 +307,101 @@ class Solution {
 }
 ```
 
+### T740. [Delete and Earn](https://leetcode.cn/problems/delete-and-earn/)
+
+You are given an integer array `nums`. You want to maximize the number of points you get by performing the following operation any number of times:
+
+- Pick any `nums[i]` and delete it to earn `nums[i]` points. Afterwards, you must delete **every** element equal to `nums[i] - 1` and **every** element equal to `nums[i] + 1`.
+
+Return *the **maximum number of points** you can earn by applying the above operation some number of times*.
+
+**Example 1:**
+
+```
+Input: nums = [3,4,2]
+Output: 6
+Explanation: You can perform the following operations:
+- Delete 4 to earn 4 points. Consequently, 3 is also deleted. nums = [2].
+- Delete 2 to earn 2 points. nums = [].
+You earn a total of 6 points.
+```
+
+**Example 2:**
+
+```
+Input: nums = [2,2,3,3,3,4]
+Output: 9
+Explanation: You can perform the following operations:
+- Delete a 3 to earn 3 points. All 2's and 4's are also deleted. nums = [3,3].
+- Delete a 3 again to earn 3 points. nums = [3].
+- Delete a 3 once more to earn 3 points. nums = [].
+You earn a total of 9 points.
+```
+
+**Constraints:**
+
+- `1 <= nums.length <= 2 * 104`
+- `1 <= nums[i] <= 104`
+
+#### My Solution
+
+Firstly, we need to sort the `nums`
+
+Then, we can conclude that $f(n) = (sum\ of\ the\ num[i]) +  (num[i] == nums[i] - 1)\ ?\ max( f(n-2), f (n-3)) : max(f(n-1), f(n-2))$
+
+```java
+class Solution {
+    public int deleteAndEarn(int[] nums) {
+        Arrays.sort(nums);
+        int idx = 0;
+        int length = nums.length;
+        int lastNum = nums[0];
+        int curNum = nums[0];
+        int p=0;
+        int q=0;
+        int r=0;
+        for (;idx<length;idx++){
+            if (nums[idx] == curNum){
+                r+=nums[idx];
+            }else{
+                lastNum = nums[idx-1];
+                curNum = nums[idx];
+                break;
+            }
+        }
+        if (idx == length){
+            return r;
+        }
+        int temp;
+        int next;
+        while(idx<length){
+            temp = 0;
+            for (;idx<length;idx++){
+                if (nums[idx] == curNum){
+                    temp += nums[idx];
+                }else {
+                    break;
+                }
+            }
+            if (lastNum == curNum - 1){
+                next = temp + (p > q ? p : q);
+                p = q;
+                q = r;
+                r = next;
+            } else {
+                next = temp + (q > r ? q : r);
+                p = q;
+                q = r;
+                r = next;
+            }
+            lastNum = curNum;
+            if (idx < length){
+                curNum = nums[idx];
+            }
+        }
+        return r > q? r : q;
+    }
+}
+```
+
+## Matrix
