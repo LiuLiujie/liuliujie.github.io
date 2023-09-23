@@ -9,9 +9,17 @@ tag:
 
 This blog records the solutions I made for the Dynamic Programming questions from Leetcode.
 
-## Fibonacci
+## Fibonacci related problems
 
-### 70. [Climbing Stairs](https://leetcode.cn/problems/climbing-stairs/)
+Firstly, find out the **transformation function** for the problem.
+
+Then, from the starting point to calculate the results by iterating the array. 
+
+Finally, reach and output the final result.
+
+Typically, we don't have to persist all the intermediate results and only three or four states is needed.
+
+### T70. [Climbing Stairs](https://leetcode.cn/problems/climbing-stairs/)
 
 You are climbing a staircase. It takes `n` steps to reach the top.
 
@@ -64,7 +72,7 @@ public:
 
 
 
-### 509. [Fibonacci Number](https://leetcode.cn/problems/fibonacci-number/)
+### T509. [Fibonacci Number](https://leetcode.cn/problems/fibonacci-number/)
 
 The **Fibonacci numbers**, commonly denoted `F(n)` form a sequence, called the **Fibonacci sequence**, such that each number is the sum of the two preceding ones, starting from `0` and `1`. That is,
 
@@ -405,4 +413,132 @@ class Solution {
 }
 ```
 
-## Matrix
+## Matrix related problems
+
+### T62. [Unique Paths](https://leetcode.cn/problems/unique-paths/)
+
+There is a robot on an `m x n` grid. The robot is initially located at the **top-left corner** (i.e., `grid[0][0]`). The robot tries to move to the **bottom-right corner** (i.e., `grid[m - 1][n - 1]`). The robot can only move either down or right at any point in time.
+
+Given the two integers `m` and `n`, return *the number of possible unique paths that the robot can take to reach the bottom-right corner*.
+
+The test cases are generated so that the answer will be less than or equal to $2 * 10^9$.
+
+**Example1:**
+
+![Example1](https://assets.leetcode.com/uploads/2018/10/22/robot_maze.png)
+
+```
+Input: m = 3, n = 7
+Output: 28
+```
+
+**Example 2:**
+
+```
+Input: m = 3, n = 2
+Output: 3
+Explanation: From the top-left corner, there are a total of 3 ways to reach the bottom-right corner:
+1. Right -> Down -> Down
+2. Down -> Down -> Right
+3. Down -> Right -> Down
+```
+
+#### My Solution
+
+The elements from firstly line and the first column are always 1 because there is only one path.
+
+The state transformation function is $f(x,y) = f(x-1,y) + f(x,y-1)$.
+
+The following solution records all the intermediate results, but the memory can still be optimised since only the upper row and left column are necessary for the calculation.
+
+```java
+class Solution {
+    public int uniquePaths(int m, int n) {
+        if (m==1 || n==1){
+            return 1;
+        }
+        int[][] results = new int[m][n];
+        results[0][0] = 0;
+        for (int y=0; y<m; y++){
+            results[y][0] = 1;
+        }
+        for (int x=0; x<n; x++){
+            results[0][x] = 1;
+        }
+        for (int y=1; y<m; y++){
+            for (int x=1; x<n; x++){
+                results[y][x] = results[y-1][x] + results[y][x-1];
+            }
+        }
+        return results[m-1][n-1];
+    }
+}
+```
+
+
+
+### T64. [Minimum Path Sum](https://leetcode.cn/problems/minimum-path-sum/)
+
+Given a `m x n` `grid` filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.
+
+**Note:** You can only move either down or right at any point in time.
+
+**Example 1:**
+
+![Example1](https://assets.leetcode.com/uploads/2020/11/05/minpath.jpg)
+
+```
+Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
+Output: 7
+Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
+```
+
+**Example 2:**
+
+```
+Input: grid = [[1,2,3],[4,5,6]]
+Output: 12 
+```
+
+**Constraints:**
+
+- `m == grid.length`
+- `n == grid[i].length`
+- `1 <= m, n <= 200`
+- `0 <= grid[i][j] <= 200`
+
+#### My Solution
+
+The same logic as the question above, but with a little changes in initialization and state transformation function.
+
+```java
+class Solution {
+    public int minPathSum(int[][] grid) {
+        int m = grid.length; // columns
+        int n = grid[0].length; // lines
+        int[][] results = new int[m][n];
+        
+        //Init the starting point
+        results[0][0] = grid[0][0];
+        
+        //Init the results with the first line and the first column
+        for (int i=1; i<m; i++){
+            results[i][0] = grid[i][0] + results[i-1][0];
+        }
+        for (int j=1; j<n; j++){
+            results[0][j] = grid[0][j] + results[0][j-1];
+        }
+
+        // State transformation funciton: 
+        // results[y][x] = min (results[y-1][x], results[y][x-1]) + grid[y][x]
+        for (int y =1; y<m; y++){
+            for(int x=1; x<n; x++){
+                results[y][x] = Math.min(results[y-1][x], results[y][x-1]) + grid[y][x];
+            }
+        }
+
+        return results[m-1][n-1];
+    }
+}
+```
+
