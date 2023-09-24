@@ -542,3 +542,207 @@ class Solution {
 }
 ```
 
+
+
+
+
+### T63. [Unique Paths II](https://leetcode.cn/problems/unique-paths-ii/)
+
+You are given an `m x n` integer array `grid`. There is a robot initially located at the **top-left corner** (i.e., `grid[0][0]`). The robot tries to move to the **bottom-right corner** (i.e., `grid[m - 1][n - 1]`). The robot can only move either down or right at any point in time.
+
+An obstacle and space are marked as `1` or `0` respectively in `grid`. A path that the robot takes cannot include **any** square that is an obstacle.
+
+Return *the number of possible unique paths that the robot can take to reach the bottom-right corner*.
+
+The testcases are generated so that the answer will be less than or equal to $2 * 10^9$.
+
+**Example 1:**
+
+![Example1](https://assets.leetcode.com/uploads/2020/11/04/robot1.jpg)
+
+```
+Input: obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
+Output: 2
+Explanation: There is one obstacle in the middle of the 3x3 grid above.
+There are two ways to reach the bottom-right corner:
+1. Right -> Right -> Down -> Down
+2. Down -> Down -> Right -> Right
+```
+
+**Example 2:**
+
+![Example2](https://assets.leetcode.com/uploads/2020/11/04/robot2.jpg)
+
+```
+Input: obstacleGrid = [[0,1],[0,0]]
+Output: 1
+```
+
+**Constraints:**
+
+- `m == obstacleGrid.length`
+- `n == obstacleGrid[i].length`
+- `1 <= m, n <= 100`
+- `obstacleGrid[i][j]` is `0` or `1`.
+
+
+
+#### My Solution
+
+Compare the question **T62** above, this question need to consider the following two things:
+
+- During initialisation of the first line and the first column, we need to consider if there is an obstacle along the only path.
+- During the path calculation, we need to consider if there are obstacles at the upper or left grid.
+
+```java
+class Solution {
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        int m = obstacleGrid.length;
+        int n = obstacleGrid[0].length;
+
+        //Init the first line and the first column
+        int results[][] = new int[m][n];
+        boolean hasStone = false;
+        for (int i=0; i<m; i++){
+            if (obstacleGrid[i][0] == 0 && !hasStone){
+                results[i][0] = 1;
+            } else {
+                hasStone = true;
+                results[i][0] = 0;
+            }
+        }
+        hasStone = false;
+        for (int i=0; i<n; i++){
+            if (obstacleGrid[0][i] == 0 && !hasStone){
+                results[0][i] = 1;
+            } else{
+                hasStone = true;
+                results[0][i] = 0;
+            }
+        }
+
+        //Calc the path
+        for (int y=1;y<m; y++){
+            for (int x=1; x<n;x++){
+                if (obstacleGrid[y][x] == 1){
+                    results[y][x] = 0;
+                } else {
+                    results[y][x] = 
+                        (obstacleGrid[y-1][x] == 1 ? 0 : results[y-1][x]) + 
+                        (obstacleGrid[y][x-1] == 1 ? 0 : results[y][x-1]);
+                }
+            }
+        }
+        return results[m-1][n-1];
+    }
+}
+```
+
+## Dynamic programming in handling strings
+
+### T5. [Longest Palindromic Substring](https://leetcode.cn/problems/longest-palindromic-substring/)
+
+Given a string `s`, return the longest *palindromic substring* in `s`. (最长回文子串)
+
+**Example 1:**
+
+```
+Input: s = "babad"
+Output: "bab"
+Explanation: "aba" is also a valid answer.
+```
+
+**Example 2:**
+
+```
+Input: s = "cbbd"
+Output: "bb"
+```
+
+**Constraints:**
+
+- `1 <= s.length <= 1000`
+- `s` consist of only digits and English letters.
+
+
+
+#### My Solution
+
+We can learn from the question that
+
+- The substring with length 1 is always palindromic
+- The substring with length 2 need to check if the two characters are the same
+- The substring longer than 3 need to check
+  -  The two edge characters are the same
+  -  The substring without the edge characters is palindromic
+
+Therefore, we can have the transformation function:
+
+$f(i,j) = (S_i == S_j) \and f(i+1, j-1)$
+
+We can use a boolean table to represent whether the substring is palindromic or not.
+
+For example, for "babad" we can learn:
+
+| i \ j | 0    | 1    | 2    | 3    | 4    |
+| ----- | ---- | ---- | ---- | ---- | ---- |
+| **0** | T    | F    | T    | F    | F    |
+| **1** |      | T    | F    | T    | F    |
+| **2** |      |      | T    | F    | F    |
+| **3** |      |      |      | T    | F    |
+| **4** |      |      |      |      | T    |
+
+```java
+class Solution {
+    public String longestPalindrome(String s) {
+        int len = s.length();
+
+        //Boundary situations
+        if (len <= 1){
+            return s;
+        }
+
+        //Init the results
+        boolean[][] results = new boolean[len][len];
+        for (int i=0; i<len; i++){
+            for (int j=0; j<len; j++){
+                results[i][j] = (i==j);
+            }
+        }
+
+        //State transformation function:
+        //f(i,j) = (Si == Sj) && f(i+1, j-1)
+        //We need to iterate the length of the substring instead of the position of i and j
+        for (int L=2; L<=len; L++){
+            for (int i=0; i<len; i++){
+                int j = i + L - 1;
+                if (j >= len){
+                    //Out of boundary
+                    break;
+                }
+                if (L > 2){
+                    //Length is bigger than 2
+                    results[i][j] = s.charAt(i) == s.charAt(j) && results[i+1][j-1];
+                } else {
+                    //Length is 2
+                    results[i][j] = s.charAt(i) == s.charAt(j);
+                }
+            }
+        }
+
+        //Find the longest from results
+        int maxLen=1;
+        int maxI=0;
+        for (int i=0; i<len; i++){
+            for (int j=i+1; j<len; j++){
+                if (results[i][j] && (j-i+1) > maxLen){
+                    maxLen = (j-i+1);
+                    maxI = i;
+                }
+            }
+        }
+        return s.substring(maxI, maxI + maxLen);
+    }
+}
+```
+
