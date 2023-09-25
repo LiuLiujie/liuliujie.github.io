@@ -746,3 +746,137 @@ class Solution {
 }
 ```
 
+### T139. [Word Break](https://leetcode.cn/problems/word-break/)
+
+Given a string `s` and a dictionary of strings `wordDict`, return `true` if `s` can be segmented into a space-separated sequence of one or more dictionary words.
+
+**Note** that the same word in the dictionary may be reused multiple times in the segmentation.
+
+**Example 1:**
+
+```
+Input: s = "leetcode", wordDict = ["leet","code"]
+Output: true
+Explanation: Return true because "leetcode" can be segmented as "leet code".
+```
+
+**Example 2:**
+
+```
+Input: s = "applepenapple", wordDict = ["apple","pen"]
+Output: true
+Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".
+Note that you are allowed to reuse a dictionary word.
+```
+
+**Example 3:**
+
+```
+Input: s = "catsandog", wordDict = ["cats","dog","sand","and","cat"]
+Output: false
+```
+
+**Constraints:**
+
+- `1 <= s.length <= 300`
+- `1 <= wordDict.length <= 1000`
+- `1 <= wordDict[i].length <= 20`
+- `s` and `wordDict[i]` consist of only lowercase English letters.
+- All the strings of `wordDict` are **unique**.
+
+#### My Solution (timeout)
+
+My solution should work but it cost too much time.
+
+```java
+package T139;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class WordBreak {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        int len = s.length();
+      	List<Integer> wordLens = new ArrayList<>(len);
+      	for (String word : wordDict){
+          	wordLens.add(word.length());
+        }
+      
+      	Set<String> wordDictSet = new HashSet(wordDict);
+
+        //Edge situation
+        if (len == 1) {
+            for (String str : wordDict) {
+                if (s.equals(str)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        //results[i][j] == true means the substring from i to j is in the dict
+        boolean[][] results = new boolean[len][len];
+
+        //Iterate by length of substring
+        int i, j;
+        String sub;
+        for (int L = 1; L <= len; L++) {
+            for (i = 0; i < len; i++) {
+                j = i + L - 1;
+                if (j >= len) {
+                    break;
+                }
+                sub = s.substring(i, j + 1);
+              	if (wordDictSet.contains(sub){
+                  	results[i][j] = true;
+                }
+            }
+        }
+
+        //Fetch result
+        return dfs(results, len, 0);
+    }
+		
+    //DFS timeout
+    private boolean dfs(boolean[][] results, int len, int i) {
+        if (i == len) {
+            return true;
+        }
+        boolean found = false;
+        for (int j = i; j < len; j++) {
+            if (results[i][j] && !found) {
+                found = dfs(results, len, j+1);
+            }
+        }
+        return found;
+    }
+}
+```
+
+#### [Official Solution](https://leetcode.cn/problems/word-break/solutions/302471/dan-ci-chai-fen-by-leetcode-solution/)
+
+We share the same idea that we need to use an array to store the previous results. I use a 2-dimension array to store from i to j but it shouldn't be that complicated. We can break down this problem into a smaller question:
+
+- Can we break the substring from 0 to $i$ into two pieces, which the first piece 0 to $j$ can be break and the second piece $j$ to $i$ is a word in the dictionary. We start the $i$ from 1 because the empty string can always be broke. 
+
+In this way, the `dp[j]` represent that if the substring from 0 to$j$ can be broke, and we check the last word from $j$ to $i$. Then, we iterate the $i$ to the length of the string `s`
+
+```java
+public class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        Set<String> wordDictSet = new HashSet(wordDict);
+        boolean[] dp = new boolean[s.length() + 1];
+        dp[0] = true;
+        for (int i = 1; i <= s.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (dp[j] && wordDictSet.contains(s.substring(j, i))) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[s.length()];
+    }
+}
+```
+
