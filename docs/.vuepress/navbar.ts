@@ -5,7 +5,13 @@ import { lifeNavbar } from "../life/life-navbar";
 
 export const navbarConfig = navbar([
   { text: "Home", link: '/'},
-  { text: "Category", link:'/category/'},
+  { text: "Category", prefix:"/category/", children: [
+    { text: "All categories", link: "" },
+    { text: "My notes", children: [
+      { text: "Paper reading notes", link: "paper-reading-notes/"},
+      //{ text: "Book reading notes", link: "book-reading-notes/"}
+    ]}
+  ]},
   { text: "Articles", prefix: '/article/', children: articleNavbar},
   { text: "Projects", prefix:'/projects/', children: projectNavbar},
   { text: "Life", prefix: "/life", children: lifeNavbar}
