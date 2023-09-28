@@ -74,7 +74,7 @@ export default hopeTheme({
 
   encrypt: {
     config: {
-      "/life/diaries/": ["1219"],
+      "/life/": ["1219"],
     },
   },
 

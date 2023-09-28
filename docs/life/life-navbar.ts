@@ -1,8 +1,6 @@
 export const lifeNavbar = [
-    {text: "My life", link: "/"},
-    { text: "Diaries", children:[ {text: "Catelog", link: "/diaries" }]},
-    { text: "Essays", prefix: "/essays/", children: [
-        "Italia.md"
-        ]
-    }
+    { text: "My life", link: "/"},
+    { text: "Diaries", link: "/diaries/"},
+    { text: "Essays",  link: "/essays/"},
+    { text: "Ideas",   link: "/ideas/"}
 ]
