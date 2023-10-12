@@ -1,15 +1,14 @@
 ---
+Title: "[Paper Reading] Hints on Test Data Selection: Help for the Practicing Programmer"
 category: Paper Reading Notes
 tag: 
 - Testing
 - Mutation Testing
 - Coupling Effect
 ---
-# [Paper Reading] Hints on Test Data Selection: Help for the Practicing Programmer
-
-Richard A. DeMillo, Richard J. Lipton, and Frederick G. Sayward
 
 
+## Summary
 
 Error classifications:
 
@@ -60,5 +59,4 @@ Questions:
 
 
 
-   
 

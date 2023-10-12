@@ -10,7 +10,7 @@ This project presented a data integration approach to enrich a semi-structured d
 
 The ([Paper](https://essay.utwente.nl/91716/))
 
-## Presentation
+## Slide
 @slidestart
 
 ## Help Rich Info Get Richer
