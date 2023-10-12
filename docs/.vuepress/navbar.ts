@@ -14,5 +14,6 @@ export const navbarConfig = navbar([
   ]},
   { text: "Articles", prefix: '/article/', children: articleNavbar},
   { text: "Projects", prefix:'/projects/', children: projectNavbar},
-  { text: "Life", prefix: "/life", children: lifeNavbar}
+  { text: "Life", prefix: "/life", children: lifeNavbar},
+  { text: "Study Mode Checklist", link: "/study-mode-checklist"}
 ]);
