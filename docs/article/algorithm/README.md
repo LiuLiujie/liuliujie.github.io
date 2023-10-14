@@ -8,4 +8,5 @@ article: false
 
 ## Algorithms
 1. [Binary Tree Questions](binary-tree.md)
-2. [Dynamic programming](dp.md)
+2. [Dynamic Programming](dp.md)
+3. [Backtracking Algorithm](backtracking.md)
