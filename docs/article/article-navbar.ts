@@ -1,3 +1,20 @@
+export const devopsNavbar = [
+  { text: "Data Storage", link: "data-storage/", prefix: "data-storage/", children:[
+    { text: "SQL Basic", link: "sql"},
+    { text: "MySQL", link: "mysql"},
+    { text: "Redis", link: "redis"},
+    { text: "MongoDB", link: "mongedb"},
+    { text: "Minio", link: "minio"},
+    { text: "Elastic Search", link: "elastic"}
+  ]},
+  { text: "Containerlization", link: "containerlization/", prefix: "containerlization/", children:[
+    { text: "Docker", link: "docker"}
+  ]},
+  { text: "Operation System", link: "operation-system/", prefix: "operation-system/", children:[
+    {text: "Ubuntu", link:"ubuntu"}
+  ]}
+]
+
 export const articleNavbar = [
     { text: "All articles", link: "" },
     { text: "Computer Science", children:[
@@ -5,7 +22,15 @@ export const articleNavbar = [
       //{ text: "Computer Network", link: ""},
       //{ text: "Operation System", link: ""}
     ]},
+    { text: "Frontend", children: [
+
+    ]},
+    { text: "Backend", children:[
+      { text: "Java & Spring framework", link: "java&spring/"},
+    ]},
+    { text: "DevOps", prefix: "devops/", children: devopsNavbar},
     { text: "GPGPU", prefix: "gpgpu/", children: [
-      { text: "CUDA Tutorial (Chinese)", link: "cuda-tutorial-chinese/"}
+      { text: "CUDA Tutorial", link: "cuda-tutorial-chinese/"}
     ]},
 ]
+
