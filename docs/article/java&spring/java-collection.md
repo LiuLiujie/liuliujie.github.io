@@ -7,7 +7,7 @@ tag:
 
 # Java Collection
 
-## Introduction 
+## 1. Introduction 
 The Java collection can be roughly divided into four systems: Set, List, Queue and Map
 - `Set`: unordered and unrepeatable; 无序，不可重复
 - `List`: ordered and repetable sets; 有序，可重复
@@ -34,7 +34,7 @@ Every element in the implementation of Map is a **key-value** pair, which the ke
 
 ![map-interface](https://pics.yujieliu.com/blog/2023/10/a5988f11f5ea5b454b1254bd213c6a51.png)
 
-## Collection Interface
+## 2. Collection Interface
 
 The function definitions can refer to [here](https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html).
 
@@ -89,13 +89,13 @@ public class IteratorExample {
 
 
 
-### Set Interface
+### 2.1. Set Interface
 
 No extra method definitions are added to `Set` Interface.
 
 The `add()` will return `false` when trying to add a repeated element into a set.
 
-### List Interface
+### 2.2. List Interface
 
 #### New methods: CRUD to specific position
 
@@ -113,7 +113,7 @@ The `add()` will return `false` when trying to add a repeated element into a set
 
 
 
-### Queue Interface
+### 2.3. Queue Interface
 
 FIFO container, using `offer()` to insert an element to the last and using `poll()` to get the first element
 
@@ -127,7 +127,7 @@ FIFO container, using `offer()` to insert an element to the last and using `poll
 
 
 
-## Map Interface
+## 3. Map Interface
 
 The function definitions can refer to [here](https://docs.oracle.com/javase/8/docs/api/java/util/Map.html).
 
@@ -143,4 +143,114 @@ The function definitions can refer to [here](https://docs.oracle.com/javase/8/do
 | boolean           | containsKey(Object key) | Returns `true` if this map contains a mapping for the specified key. |
 
 
+
+## 4. Set Implementation
+
+### 4.1. HashSet
+
+#### Features
+
+- Do NOT preserve the insertion order
+- NOT Thread-safe
+- Nullable
+- Using `equals()` and `hashCode()` to identify a object
+
+#### Equals() and hashCode()
+
+- `equals()`
+  - If the class does NOT have an override `equals()` function, then we compare the two addresses of the objects are the same or not. Equivalent to `==`
+  - If the class override the `equals()` function, then we use this function.
+- `hashCode()`: an `int` to locate the index of the object in the hash table
+  - If the class does NOT have an override `hashCode` function, then we compare the two addresses of the objects are the same or not. Equivalent to `==`
+  - If the class override the `hashCode()` function, then we use this function.
+
+| Two objects            | Same equal results         | Different equal results                                      |
+| ---------------------- | -------------------------- | ------------------------------------------------------------ |
+| **Same hashCode**      | Not allowed to put         | Save in the same position using a linked list (slow down the perf) |
+| **Different hashCode** | Save in different position | Save in different position                                   |
+
+#### LinkedHashSet
+
+The elements in a linkedHashSet is storage in **sequence** so it will have lower performance in insertion but better iteration performance.
+
+
+
+### 4.2. TreeSet
+
+TreeSet is the implementation of `SortedSet` Interface, and it can make sure that all the elements in the set is sorted.
+
+- NOT thread-safe
+
+#### New methods
+
+- comparator():返回对此 set 中的元素进行排序的比较器；如果此 set 使用其元素的自然顺序，则返回null。
+- first():返回此 set 中当前第一个（最低）元素。
+- last(): 返回此 set 中当前最后一个（最高）元素。
+- lower(E e):返回此 set 中严格小于给定元素的最大元素；如果不存在这样的元素，则返回 null。
+- higher(E e):返回此 set 中严格大于给定元素的最小元素；如果不存在这样的元素，则返回 null。
+- subSet(E fromElement, E toElement):返回此 set 的部分视图，其元素从 fromElement（包括）到 toElement（不包括）。
+- headSet(E toElement):返回此 set 的部分视图，其元素小于toElement。
+- tailSet(E fromElement):返回此 set 的部分视图，其元素大于等于 fromElement。
+
+#### Sorting and Comparable interface
+
+The interface defines a `compareTo(Object obj)`method which any class can override this method to make a comparison between two instances. For example, if `obj1.compareTo(obj2)` return 0, it means two objects are equal; if it returns a positive number, it means the `obj1` is bigger than `obj2`.
+
+The element of a treeSet **needs to have** a defined `compareTo()` method, and the treeSet will use this method to sort the elements. Default is ascending. (升序，从小到大)
+
+We can also pass a comparator when initialising the treeSet. For example:
+
+```java
+public static void main(String[] args){
+        Person p1 = new Person();
+        p1.age =20;
+        Person p2 =new Person();
+        p2.age = 30;
+        Comparator<Person> comparator = new Comparator<Person>(){
+
+            @Override
+            public int compare(Person o1, Person o2) {
+                //decending age 年龄越小越靠后
+                if(o1.age<o2.age){
+                    return 1;
+                }else if(o1.age>o2.age){
+                    return -1;
+                }else{
+                    return 0;
+                }
+                
+            }
+        };
+        TreeSet<Person> set = new TreeSet<Person>(comparator);
+        set.add(p1);
+        set.add(p2);
+        System.out.println(set);
+}
+
+//Result: [Person[age=30], Person[age=20]]
+```
+
+**Note: Changing an inserted element will NOT change the position of the element. So it is a best practice that do not change the value after insertion**
+
+
+
+### 4.3. EnumSet
+
+EnumSet is designed for enum type. All the elements in a enumSet must be a value of the same enum type. The elements in a enumSet is also sorted by the definition order in the enum class.
+
+- Non-Null
+- NOT Thread-safe
+
+
+
+### 4.4 Performance comparison
+
+**EnumSet>HashSet>LinkedHashSet>TreeSet**
+
+#### Usage Recommandation
+
+- TreeSet: Need a sorted set 当需要一个特定排序的集合时
+- ENumSet: Need to save enum values 当需要保存枚举类的枚举值时
+- HashSet: More insertion and query ops: 当经常使用添加、查询操作时
+- LinkedHashSet: Insertion sorting or more deletion and iteration 当经常插入排序或使用删除、插入及遍历操作时。
 
