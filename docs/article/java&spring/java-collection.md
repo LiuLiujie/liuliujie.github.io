@@ -454,3 +454,156 @@ Node<E> node(int index) {
 - LinkedList: Better insertion and deletion performance
 - Need thread-safe: vector 
 
+
+
+## 6. Queue
+
+- FIFO, using *offer* to insert to the last and using *poll* to get the head 
+- typically no random access
+
+### 6.1 PriorityQueue
+
+- The data in this queue are sorted using a **comparator**
+- When using `peek()` or `poll()` to get the first elements, it will return the **prioritised element** instead our the first-in element.
+- NOT Thread-safe, non-null
+
+#### Sorting methods
+
+- **Natural sorting** (the element type should implement `Comparable` interface)
+- Or we can assign a **Comparator**
+
+```java
+PriorityQueue<Integer> qi = new PriorityQueue<Integer>();
+     qi.add(5);
+     qi.add(2);
+     qi.add(1);
+     qi.add(10);
+     qi.add(3);
+     while (!qi.isEmpty()){
+       System.out.print(qi.poll() + ",");
+     }
+     System.out.println();
+     //DESC
+     Comparator<Integer> cmp = new Comparator<Integer>() {
+       public int compare(Integer e1, Integer e2) {
+         return e2 - e1;
+       }
+     };
+     PriorityQueue<Integer> q2 = new PriorityQueue<Integer>(5,cmp);
+     q2.add(2);
+     q2.add(8);
+     q2.add(9);
+     q2.add(1);
+     while (!q2.isEmpty()){
+           System.out.print(q2.poll() + ",");
+         }
+```
+
+#### Source code
+
+- It is a dynamic array, the same as the `ArrayList`
+
+```java
+public PriorityQueue() {
+    this(DEFAULT_INITIAL_CAPACITY, null);
+}
+
+public PriorityQueue(int initialCapacity) {
+    this(initialCapacity, null);
+}
+
+public PriorityQueue(int initialCapacity,
+                         Comparator<? super E> comparator) {
+    // Note: This restriction of at least one is not actually needed,
+    // but continues for 1.5 compatibility
+    if (initialCapacity < 1)
+        throw new IllegalArgumentException();
+    this.queue = new Object[initialCapacity];
+    this.comparator = comparator;
+}
+
+public boolean offer(E e) {
+    if (e == null)
+        throw new NullPointerException();
+    modCount++;
+    int i = size;
+    if (i >= queue.length)
+        grow(i + 1);//Extend the array if necessary
+    size = i + 1;
+    if (i == 0)
+        queue[0] = e;
+    else
+        siftUp(i, e);
+    return true;
+}
+```
+
+
+
+### 6.2 Deque Interface and ArrayDeque Implementation
+
+- The `LinkedList` also implement the `Deque` Interface
+- Not Thread-safe, non-null
+- Can be used for both Stack and Queue
+
+​	![img](https://pics.yujieliu.com/blog/2023/10/0946f20c966a9f24055d633b59828fb8.)
+
+​	![img](https://pics.yujieliu.com/blog/2023/10/6909f90ca3f467620696f0b36d62c363.)
+
+#### ArrayDeque sourcecode
+
+- An **circular array** with 16 size by default and can be dynamic scaling
+
+Two variables, the `head` and the `tail`
+
+```java
+transient int head;
+transient int tail;
+```
+
+Both `head` and `tail` are initialized to 0 index.
+
+When adding to the front, `head--` and insert; when adding to the end, `tail++` and insert. Because this is a circular array, the head will point to the end of the array when insertion.
+
+The following figure shows that 4 elements are inserted to the head, and 2 to the tail.
+
+![img](https://pics.yujieliu.com/blog/2023/10/21f20ac15d923a5d3c3233da9b9c060f.)
+
+```java
+public void addFirst(E e) {
+    if (e == null)
+        throw new NullPointerException();
+    elements[head = (head - 1) & (elements.length - 1)] = e;
+    if (head == tail)
+        doubleCapacity();
+}
+```
+
+The `head = (head - 1) & (elements.length - 1)` makes sure that the index will not be negative.
+
+When the `head==tail`, the array will be scaled dynamically to `2*size`.
+
+- Allocate a double size array
+- Then, copy the right part of the head (green part in the figure)
+- Finally, copy the left part of the head (grey part)
+
+![img](https://pics.yujieliu.com/blog/2023/10/e1292aa2cdfb1e5cfb08e10d700c9654.)
+
+```java
+private void doubleCapacity() {
+    assert head == tail;
+    int p = head;
+    int n = elements.length;
+    int r = n - p; // num of elements of right head
+    int newCapacity = n << 1;//原空间的2倍
+    if (newCapacity < 0)
+        throw new IllegalStateException("Sorry, deque too big");
+    Object[] a = new Object[newCapacity];
+    System.arraycopy(elements, p, a, 0, r);//Copy the right part
+    System.arraycopy(elements, 0, a, r, p);//Copy the left part
+    elements = (E[])a;
+    head = 0;
+    tail = n;
+}
+```
+
