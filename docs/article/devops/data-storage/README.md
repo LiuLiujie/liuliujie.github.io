@@ -6,6 +6,7 @@ article: false
 ## SQL
 1. [SQL Basic](sql.md)
 2. [MySQL](mysql.md)
+3. [SQL Exercises](sql-exercises.md)
 
 ## NoSQL
 1. [Redis](redis.md)
