@@ -1,8 +1,8 @@
 ---
-category: Computer Science
+category: Computer Science, Programming Language
 tag:
-- Backend
 - Java
+- Java Collection
 ---
 
 # Java Collection
@@ -253,4 +253,204 @@ EnumSet is designed for enum type. All the elements in a enumSet must be a value
 - ENumSet: Need to save enum values 当需要保存枚举类的枚举值时
 - HashSet: More insertion and query ops: 当经常使用添加、查询操作时
 - LinkedHashSet: Insertion sorting or more deletion and iteration 当经常插入排序或使用删除、插入及遍历操作时。
+
+
+
+## 5. List Implementation
+
+### 5.1 ArrayList and Vector
+
+#### Initialisation and dynamic scaling
+
+ArrayList initialisation (JDK 1.8):
+
+```java
+//动态Object数组，用来保存加入到ArrayList的元素
+Object[] elementData;
+
+//ArrayList的构造函数，传入参数为数组大小
+public ArrayList(int initialCapacity) {
+   if (initialCapacity > 0) {
+        //创建一个对应大小的数组对象
+       this.elementData = new Object[initialCapacity];
+   } else if (initialCapacity == 0) {
+       //传入数字为0，将elementData 指定为一个静态类型的空数组
+       this.elementData = EMPTY_ELEMENTDATA;
+   } else {
+       throw new IllegalArgumentException(...);
+   }
+}
+
+//不指定初始大小，为10
+public ArrayList() {
+    this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
+}
+```
+
+When adding an element into an arrayList: the `ensureCapacityInternal` is called to make sure that there are enough space for it. If not enough, it will copy the old and allocate a new array with enough space
+
+```java
+public boolean add(E e) {
+    ensureCapacityInternal(size + 1);  // 数组的大小增加1
+    elementData[size++] = e;
+    return true;
+}
+
+private void grow(int minCapacity) {
+    //生成大小合适的newCapacity
+  	...
+    //下面这行就是进行了数组扩容
+    elementData = Arrays.copyOf(elementData, newCapacity);
+}
+```
+
+Two methods can be used to change the size of an arrayList:
+
+- **void ensureCapacity(int minCapacity):** 如有必要，增加此 ArrayList 实例的容量，以确保它至少能够容纳最小容量参数所指定的元素数。
+- **void trimToSize():** 将此 ArrayList 实例的容量调整为列表的当前大小。
+
+#### Difference between ArrayList and Vector
+
+1. ArrayList is **NOT thread-safe**，Vector is **thread-safe**.
+2. The performance of Vector is lower.
+
+#### Iteration
+
+1. Iterator
+
+```java
+Integer value = null;
+Iterator iter = list.iterator();
+while (iter.hasNext()) {
+    value = (Integer)iter.next();
+}
+```
+
+2. Random access: ArrayList implement the RandomAccess Interface
+
+```java
+Integer value = null;
+int size = list.size();
+for (int i=0; i<size; i++) {
+    value = (Integer)list.get(i);        
+}
+```
+
+3. For-each loop
+
+```java
+Integer value = null;
+for (Integer integ:list) {
+    value = integ;
+}
+```
+
+**Performance: Random access > For-each loop > Iterator**
+
+
+
+### 5.2 Stack
+
+Stack is a subclass of Vector
+
+- Peek(): check the top element without removing it
+- Pop(): check and remove the top element 
+- Push(): add an element to the top of the stack
+
+The performance of Stack is low so it is recommend to use LinkedList to implement stack.
+
+
+
+### 5.3 LinkedList
+
+- Lower random access performance, higher insertion & deletion performance
+- Implemented `Deque` interface, can be used to implement **stack and queue**.
+- NOT Thread-safe
+
+
+
+#### New methods: xxxFirst() and xxxLast()
+
+- **void addFirst(E e):**将指定元素插入此列表的开头。
+- **void addLast(E e):** 将指定元素添加到此列表的结尾。
+- **E getFirst(E e):** 返回此列表的第一个元素。
+- **E getLast(E e):** 返回此列表的最后一个元素。
+- **boolean offerFirst(E e):** 在此列表的开头插入指定的元素。
+- **boolean offerLast(E e):** 在此列表末尾插入指定的元素。
+- **E peekFirst(E e):** 获取但不移除此列表的第一个元素；如果此列表为空，则返回 null。
+- **E peekLast(E e):** 获取但不移除此列表的最后一个元素；如果此列表为空，则返回 null。
+- **E pollFirst(E e):** 获取并移除此列表的第一个元素；如果此列表为空，则返回 null。
+- **E pollLast(E e):** 获取并移除此列表的最后一个元素；如果此列表为空，则返回 null。
+- **E removeFirst(E e):** 移除并返回此列表的第一个元素。
+- **E removeLast(E e):** 移除并返回此列表的最后一个元素。
+- **boolean removeFirstOccurrence(Objcet o):** 从此列表中移除第一次出现的指定元素（从头部到尾部遍历列表时）。
+- **boolean removeLastOccurrence(Objcet o):** 从此列表中移除最后一次出现的指定元素（从头部到尾部遍历列表时）。
+
+
+
+#### Source code
+
+```java
+//成员变量：表头，表尾
+transient Node<E> first;
+transient Node<E> last;
+
+//默认构造函数，表示创建一个空链表
+public LinkedList() { }
+
+private static class Node<E> {
+    //表示集合元素的值
+    E item;
+    
+   	//指向下个元素
+    Node<E> next;
+    
+ 		//指向上个元素
+    Node<E> prev;
+}
+
+//Add ellement to the last
+void linkLast(E e) {
+    final Node<E> l = last;
+    final Node<E> newNode = new Node<>(l, e, null);
+    last = newNode;
+    if (l == null)
+        first = newNode;
+    else
+        l.next = newNode;
+    size++;
+    modCount++;
+}
+
+//Get element
+public E get(int index) {
+    checkElementIndex(index);//检查索引是否有效
+    return node(index).item;
+}
+
+//Compare the index with 1/2 position
+//If smaller, starting interation from head
+//If bigger, starting from tail
+Node<E> node(int index) {
+    // assert isElementIndex(index);
+
+    if (index < (size >> 1)) {
+        Node<E> x = first;
+        for (int i = 0; i < index; i++)
+            x = x.next;
+        return x;
+    } else {
+        Node<E> x = last;
+        for (int i = size - 1; i > index; i--)
+            x = x.prev;
+        return x;
+    }
+}
+```
+
+### 5.4 Performance comparison
+
+- ArrayList: Better iteration and random access performance
+- LinkedList: Better insertion and deletion performance
+- Need thread-safe: vector 
 
