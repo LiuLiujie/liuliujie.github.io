@@ -1,8 +1,17 @@
+---
+category:
+- Computer Science
+- DevOps
+- Data Storage
+
+tag: 
+- SQL
+- MySQL
+---
+
+
+
 # SQL Basic
-
-[TOC]
-
-
 
 ## 1. CRUD
 

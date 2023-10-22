@@ -1,3 +1,16 @@
+---
+category:
+- Computer Science
+- DevOps
+- Data Storage
+
+tag: 
+- SQL
+- MySQL
+---
+
+
+
 # MySQL
 
 ### [Window functions](https://dev.mysql.com/doc/refman/8.0/en/window-functions-usage.html)

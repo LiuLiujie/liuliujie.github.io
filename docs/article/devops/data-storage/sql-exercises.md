@@ -1,3 +1,17 @@
+---
+category:
+- Computer Science
+- DevOps
+- Data Storage
+
+tag: 
+- SQL
+- MySQL
+- Leetcode
+---
+
+
+
 # SQL Exercises
 
 ## T177 [Nth Highest Salary](https://leetcode.cn/problems/nth-highest-salary/)
