@@ -5,6 +5,7 @@ import { lifeNavbar } from "../life/life-navbar";
 
 export const navbarConfig = navbar([
   { text: "Home", link: '/'},
+  { text: "Category", link: '/category/'},
   { text: "Articles", prefix: '/article/', children: articleNavbar},
   { text: "DevOps", prefix: '/article/devops/', children: devopsNavbar},
   { text: "Projects", prefix:'/projects/', children: projectNavbar},
