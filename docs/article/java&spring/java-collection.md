@@ -607,3 +607,176 @@ private void doubleCapacity() {
 }
 ```
 
+
+
+## 7. Map
+
+### 7.1 HashMap
+
+HashMap 是一个散列表，它存储的内容是键值对(key-value) 映射(mapping)。
+
+HashMap和Hashtable都是Map接口的经典实现类，它们之间的关系完全类似于ArrayList和Vector的关系。由于Hashtable是个古老的Map实现类，需要方法比较繁琐，不符合Map接口的规范。
+
+#### HashMap and Hashtable
+
+1.Hashtable是一个线程安全的Map实现，但HashMap是线程不安全的实现，所以HashMap比Hashtable的性能好一些；但如果有多个线程访问同一个Map对象时，是盗用Hashtable实现类会更好。
+
+2.Hashtable不允许使用null作为key和value，如果试图把null值放进Hashtable中，将会引发NullPointerException异常；但是HashMap可以使用null作为key或value。
+
+
+
+#### Recognise keys and values are equal or not
+
+**key判断相等的标准**
+
+类似于HashSet，HashMap与Hashtable判断两个key相等的标准是：两个key通过equals()方法比较返回true,两个key的hashCode值也相等，则认为两个key是相等的。
+
+**注意：用作key的对象必须实现了hashCode()方法和equals()方法。并且最好两者返回的结果一致，即如果equals()返回true，hashCode()值相等。**
+
+**另：**如果是加入HashMap的key是个可变对象，在加入到集合后又修改key的成员变量的值，可能导致hashCode()值以及equal()的比较结果发生变化，无法访问到该key。一般情况下不要修改。
+
+
+
+**value判断相等的标准**
+
+HashMap与Hashtable判断两个value相等的标准是：只要两个对象通过equals()方法比较返回true即可。
+
+**注意：**HashMap中key所组成的集合元素不能重复，value所组成的集合元素可以重复。
+
+
+
+#### Source code
+
+```java
+// 默认构造函数。
+HashMap()
+
+// 指定“容量大小”的构造函数
+HashMap(int capacity)
+
+// 指定“容量大小”和“加载因子”的构造函数
+HashMap(int capacity, float loadFactor)
+
+// 包含“子Map”的构造函数
+HashMap(Map<? extends K, ? extends V> map)
+```
+
+- 容量 (capacity) 是哈希表的容量，初始容量是哈希表在创建时的容量（即`DEFAULT_INITIAL_CAPACITY = 1 << 4`）。
+- 加载因子 (loadFactor) 是哈希表在其容量自动增加之前可以达到多满的一种尺度。当哈希表中的条目数超出了加载因子与当前容量的乘积时，则要对该哈希表进行 resize操作（即重建内部数据结构），从而将哈希表扩容至原来的两倍。通常，默认加载因子是 0.75(即`DEFAULT_LOAD_FACTOR = 0.75f`), 这是在时间和空间成本上寻求一种折衷。加载因子过高虽然减少了空间开销，但同时也增加了查询成本（在大多数 HashMap 类的操作中，包括 get 和 put 操作，都反映了这一点）。在设置容量时应该考虑到映射中所需的条目数及其加载因子，以便最大限度地减少 resize操作次数。如果容量大于最大条目数除以加载因子，则不会发生 rehash 操作。
+
+
+
+#### Node
+
+一般实现哈希表的方法采用“拉链法”，我们可以理解为“链表的数组”。如果hash(key)值相等，则都存入该hash值所对应的链表中。**所以每个数组元素代表一个链表，其中的共同点就是hash(key)相等。**
+
+![img](https://pics.yujieliu.com/blog/2023/11/d284202c0a7e10626ea745811a1fec5c.)
+
+
+
+#### Iteration
+
+1.遍历HashMap的键值对
+
+第一步：根据entrySet()获取HashMap的“键值对”的Set集合。
+第二步：通过Iterator迭代器遍历“第一步”得到的集合。
+
+2.遍历HashMap的键
+
+第一步：根据keySet()获取HashMap的“键”的Set集合。
+第二步：通过Iterator迭代器遍历“第一步”得到的集合。
+
+3.遍历HashMap的值
+
+第一步：根据value()获取HashMap的“值”的集合。
+第二步：通过Iterator迭代器遍历“第一步”得到的集合。
+
+
+
+### 7.2 LinkedHashMap
+
+HashSet有一个LinkedHashSet子类，HashMap也有一个LinkedHashMap子类；LinkedHashMap使用双向链表来维护key-value对的次序。
+
+LinkedHashMap需要维护元素的插入顺序，因此性能略低于HashMap的性能；但是因为它以链表来维护内部顺序，所以在迭代访问**Map里的全部元素时有较好的性能**。迭代输出LinkedHashMap的元素时，将会按照添加key-value对的顺序输出。
+
+**本质上来讲，LinkedHashMap=散列表+循环双向链表**
+
+
+
+### 7.3 TreeMap
+
+reeMap是SortedMap接口的实现类。TreeMap 是一个**有序的key-value集合**，它是通过红黑树实现的，每个key-value对即作为红黑树的一个节点。
+
+#### TreeMap sorting methods
+
+TreeMap有两种排序方式，和TreeSet一样。
+
+自然排序：TreeMap的所有key必须实现Comparable接口，而且所有的key应该是同一个类的对象，否则会抛出ClassCastException异常。
+
+定制排序：创建TreeMap时，传入一个Comparator对象，该对象负责对TreeMap中的所有key进行排序。
+
+
+
+#### Recognise keys and values are equal or not
+
+类似于TreeSet中判断两个元素相等的标准，TreeMap中判断两个key相等的标准是：两个key通过compareTo()方法返回0，TreeMap即认为这两个key是相等的。
+
+TreeMap中判断两个value相等的标准是：两个value通过equals()方法比较返回true。
+
+**注意：**如果使用自定义类作为TreeMap的key，且想让TreeMap良好地工作，则重写该类的equals()方法和compareTo()方法时应保持一致的返回结果：两个key通过equals()方法比较返回true时，它们通过compareTo()方法比较应该返回0。如果两个方法的返回结果不一致，TreeMap与Map接口的规则就会冲突。
+
+除此之外，与TreeSet类似，TreeMap根据排序特性，也添加了一部分新的方法，与TreeSet中的一致。
+
+
+
+#### Nature of TreeMap — R-B Tree
+
+R-B Tree，全称是Red-Black Tree，又称为“红黑树”，它一种特殊的二叉查找树。红黑树的每个节点上都有存储位表示节点的颜色，可以是红(Red)或黑(Black)。
+
+红黑树的特性:
+（1）每个节点或者是黑色，或者是红色。
+（2）根节点是黑色。
+（3）每个叶子节点（NIL）是黑色。 [注意：这里叶子节点，是指为空(NIL或NULL)的叶子节点！]
+（4）如果一个节点是红色的，则它的子节点必须是黑色的。
+（5）从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点。
+
+注意：
+(01) 特性(3)中的叶子节点，是只为空(NIL或null)的节点。
+(02) 特性(5)，确保没有一条路径会比其他路径长出俩倍。因而，红黑树是相对是接近平衡的二叉树。
+
+![img](https://pics.yujieliu.com/blog/2023/11/c3ec71124d533fdf0953e4ebfa5e18e4.)
+
+
+
+#### TreeMap Iteration
+
+遍历TreeMap的键值对
+
+第一步：根据entrySet()获取TreeMap的“键值对”的Set集合。
+第二步：通过Iterator迭代器遍历“第一步”得到的集合。
+
+遍历TreeMap的键
+
+第一步：根据keySet()获取TreeMap的“键”的Set集合。
+第二步：通过Iterator迭代器遍历“第一步”得到的集合。
+
+遍历TreeMap的值
+
+第一步：根据value()获取TreeMap的“值”的集合。
+第二步：通过Iterator迭代器遍历“第一步”得到的集合。
+
+
+
+### 7.4 Benchmark
+
+HashMap与Hashtable实现机制几乎一样，但是HashMap比Hashtable性能更好些。
+
+LinkedHashMap比HashMap慢一点，因为它需要维护一个双向链表。
+
+TreeMap比HashMap与Hashtable慢（尤其在插入、删除key-value时更慢），因为TreeMap底层采用红黑树来管理键值对。
+
+**适用场景：**
+
+- 一般的应用场景，尽可能多考虑使用HashMap，因为其为快速查询设计的。
+- 如果需要特定的排序时，考虑使用TreeMap。
+- 如果仅仅需要插入的顺序时，考虑使用LinkedHashMap。
