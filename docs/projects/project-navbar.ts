@@ -9,7 +9,8 @@ export const projectNavbar = [
         text: "Campus projects",
         children:[
           "stryker-cloud-agent.md",
-          "cloud-optimisation.md"
+          "cloud-optimisation.md",
+          "syncnema.md"
         ]
     }, {
         text: "Personal projects",
