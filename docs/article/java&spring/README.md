@@ -8,9 +8,9 @@ article: false
 2. [JVM](jvm.md)
 3. [Concurrency](java-concurrency.md)
 4. [Java IO](Java IO/README.md)
-   1. [Java 传统IO (BIO)](Java IO/java-io.md)
-   2. [Java NIO](Java IO/java-nio.md)
-   3. [Java AIO](Java IO/java-aio.mdJ)
+   1. [Java 传统IO (BIO)](JavaIO/java-io.md)
+   2. [Java NIO](JavaIO/java-nio.md)
+   3. [Java AIO](JavaIO/java-aio.mdJ)
 
 
 ## Spring
