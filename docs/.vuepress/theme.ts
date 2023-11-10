@@ -32,7 +32,7 @@ export default hopeTheme({
 
   blog: {
     name: "Yujie Liu (刘煜杰)",
-    description: "DevOps Engeneer & Researcher",
+    description: "Server-side developer & HPC researcher",
     avatar: "/assets/images/avatar.jpg",
     roundAvatar: true,
     intro: "/intro.html",
