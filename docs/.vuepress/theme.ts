@@ -68,7 +68,6 @@ export default hopeTheme({
       //Whatsapp: "https://example.com",
       //Youtube: "https://example.com",
       //Zhihu: "https://example.com",
-      //MrHope: ["https://mister-hope.com", MR_HOPE_AVATAR],
     },
   },
 
