@@ -22,11 +22,11 @@ export const articleNavbar = [
       //{ text: "Computer Network", link: ""},
       //{ text: "Operation System", link: ""}
     ]},
-    { text: "Frontend", children: [
-
+    { text: "Lnaguage", children: [
+      { text: "Java", link: "java/"},
     ]},
-    { text: "Backend", children:[
-      { text: "Java & Spring framework", link: "java&spring/"},
+    { text: "Frmaework", children:[
+      { text: "Spring framework", link: "spring/"},
     ]},
     { text: "DevOps", prefix: "devops/", children: devopsNavbar},
     { text: "GPGPU", prefix: "gpgpu/", children: [

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.15.3/dist/style.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.15.3/dist/browser/index.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.15.3/dist/index.js"></script><script>(r => {
+                setTimeout(r);
+              })(() => {
+  const {
+    markmap,
+    mm
+  } = window;
+  const {
+    el
+  } = markmap.Toolbar.create(mm);
+  el.setAttribute('style', 'position:absolute;bottom:20px;right:20px');
+  document.body.append(el);
+})</script><script>((getMarkmap, getOptions, root, jsonOptions) => {
+          const markmap = getMarkmap();
+          window.mm = markmap.Markmap.create('svg#mindmap', (getOptions || markmap.deriveOptions)(jsonOptions), root);
+        })(() => window.markmap,null,{"type":"heading","depth":0,"payload":{"lines":[1,2]},"content":"Java 学习路线","children":[{"type":"heading","depth":1,"payload":{"lines":[13,14]},"content":"Java 基础","children":[{"type":"heading","depth":2,"payload":{"lines":[14,15]},"content":"面向对象编程","children":[{"type":"list_item","depth":3,"payload":{"lines":[16,17]},"content":"基本原则 (SOLID)","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[28,29]},"content":"封装，继承和多态","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[34,35]},"content":"实例方法，静态方法与抽象方法","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[36,37]},"content":"方法重写和重载","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[38,39]},"content":"抽象类","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[40,41]},"content":"内部类","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[42,43]},"content":"可变参数方法","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[44,45]},"content":"重要关键字","children":[{"type":"list_item","depth":4,"payload":{"lines":[46,47]},"content":"this和super","children":[]},{"type":"list_item","depth":4,"payload":{"lines":[48,49]},"content":"static","children":[]},{"type":"list_item","depth":4,"payload":{"lines":[50,51]},"content":"final","children":[]},{"type":"list_item","depth":4,"payload":{"lines":[52,53]},"content":"instanceof","children":[]}]}]},{"type":"heading","depth":2,"payload":{"lines":[54,55]},"content":"Java字符串","children":[{"type":"list_item","depth":3,"payload":{"lines":[56,57]},"content":"常用方法","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[58,59]},"content":"不可变性","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[60,61]},"content":"StringBuilder与StringBuffer","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[62,63]},"content":"字符串常量池","children":[]}]}]},{"type":"heading","depth":1,"payload":{"lines":[66,67]},"content":"<a href=\"JavaIO/README.md\">Java IO</a>","children":[{"type":"heading","depth":2,"payload":{"lines":[68,69]},"content":"<a href=\"JavaIO/java-io.md\">Java 传统IO (BIO)</a>","children":[]},{"type":"heading","depth":2,"payload":{"lines":[70,71]},"content":"<a href=\"JavaIO/java-nio.md\">Java NIO</a>","children":[]},{"type":"heading","depth":2,"payload":{"lines":[72,73]},"content":"<a href=\"Java-IO/java-aio.md\">Java AIO</a>","children":[]}]},{"type":"heading","depth":1,"payload":{"lines":[74,75]},"content":"Java 集合框架 (Collections)","children":[{"type":"heading","depth":2,"payload":{"lines":[76,77]},"content":"Set &amp; List","children":[{"type":"list_item","depth":3,"payload":{"lines":[78,79]},"content":"ArrayList 和 LinkedList","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[80,81]},"content":"ArrayList 详解","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[82,83]},"content":"LinkedList 详解","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[84,85]},"content":"范型","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[86,87]},"content":"Iterator和Iterable","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[88,89]},"content":"For Loop循环","children":[]}]},{"type":"heading","depth":2,"payload":{"lines":[90,91]},"content":"Map","children":[{"type":"list_item","depth":3,"payload":{"lines":[92,93]},"content":"HashMap详解","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[94,95]},"content":"LinkedHashMap详解","children":[]}]},{"type":"heading","depth":2,"payload":{"lines":[96,97]},"content":"Collections &amp; Arrays 工具类","children":[]}]},{"type":"heading","depth":1,"payload":{"lines":[98,99]},"content":"<a href=\"java-concurrency.md\">Java 并发编程 (Concurrency)</a>","children":[{"type":"heading","depth":2,"payload":{"lines":[100,101]},"content":"线程与进程","children":[{"type":"list_item","depth":3,"payload":{"lines":[102,103]},"content":"操作系统的线程与进程","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[103,104]},"content":"Java的线程与进程","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[104,105]},"content":"Java线程的6种状态与转移","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[105,106]},"content":"线程组与线程优先级","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[106,107]},"content":"多线程带来的问题","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[107,108]},"content":"协程","children":[]}]},{"type":"heading","depth":2,"payload":{"lines":[109,110]},"content":"Java内存模型","children":[{"type":"list_item","depth":3,"payload":{"lines":[111,112]},"content":"volatile 关键字","children":[]}]},{"type":"heading","depth":2,"payload":{"lines":[113,114]},"content":"锁","children":[{"type":"list_item","depth":3,"payload":{"lines":[115,116]},"content":"syncronized 关键字与锁升级","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[116,117]},"content":"偏向锁","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[117,118]},"content":"乐观锁 CAS","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[118,119]},"content":"抽象队列同步器 AQS","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[119,120]},"content":"锁分类和 JUC 包","children":[]},{"type":"list_item","depth":3,"payload":{"lines":[120,121]},"content":"重入锁","children":[]}]},{"type":"heading","depth":2,"payload":{"lines":[122,123]},"content":"并发容器","children":[{"type":"list_item","depth":3,"payload":{"lines":[124,125]},"content":"ConcurrentHashMap","children":[]}]},{"type":"heading","depth":2,"payload":{"lines":[126,127]},"content":"线程池","children":[]}]},{"type":"heading","depth":1,"payload":{"lines":[130,131]},"content":"Java 反射与面向切面编程","children":[]}]},{})</script>
+</body>
+</html>
