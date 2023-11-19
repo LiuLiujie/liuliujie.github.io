@@ -8,15 +8,6 @@ tag:
 ---
 
 # Java 学习路线(长期更新)
-<iframe
-  :src="$withBase('/markmap/Java-roadmap.html')"
-  width="100%"
-  height="800"
-  frameborder="0"
-  scrolling="No"
-  leftmargin="0"
-  topmargin="0"
-/>
 
 
 ## Java 基础
@@ -56,7 +47,7 @@ tag:
 
   - this和super
 
-  - static
+  - [static](static.md)
 
   - final
   
@@ -69,7 +60,11 @@ tag:
 
 - 不可变性
 
+   final修饰，每次修改都创建新字符串到常量池，相当于值引用
+
 - StringBuilder与StringBuffer
+
+  Buffer加了synchronized锁，因此常用Builder，并在并发下配合ThreadLocal
 
 - 字符串常量池
   
