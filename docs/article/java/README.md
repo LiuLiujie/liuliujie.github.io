@@ -1,8 +1,13 @@
 ---
-article: false
+category:
+- Computer Science
+- Programming Language
+
+tag: 
+- Java
 ---
 
-# Java 学习路线
+# Java 学习路线(长期更新)
 <iframe
   :src="$withBase('/markmap/Java-roadmap.html')"
   width="100%"
@@ -47,13 +52,16 @@ article: false
 
 - 重要关键字
 
+  - [finally](finally.md): 除直接退出虚拟机外，finally块的内容一定会被执行；finally中返回和异常抛出会导致try或catch中的返回和异常被忽略。
+
   - this和super
 
   - static
 
   - final
-
+  
   - instanceof
+  
 
 ### Java字符串
 
