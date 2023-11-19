@@ -70,7 +70,7 @@ OFFSET offset_value;
 
 The LIMIT and OFFSET can be used together
 
-- `m`: start from m
+- `m`: start from m (index starts from 0)
 - `n`: n rows of data
 
 ```sql
@@ -79,7 +79,7 @@ WHERE condition
 LIMIT m, n
 ```
 
-
+注意：`LIMIT 1, 5`指的是返回2-6行
 
 #### AS
 
