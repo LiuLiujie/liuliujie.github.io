@@ -33,13 +33,13 @@ export const javaSideBar = [
         text: "三、Java Collection (集合框架)",
         collapsible: true,
         children:[
-
+            "java-collection.md"
         ]
     },{
         text: "四、Java Concurrency (并发编程)",
         collapsible: true,
         children:[
-
+            "java-concurrency.md"
         ]
     },{
         text: "五、Java 反射与面向切面编程",
