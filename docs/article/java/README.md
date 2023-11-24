@@ -10,36 +10,6 @@ tag:
 # Java 学习路线(长期更新)
 
 
-## Java 基础
-### 面向对象编程
-
-- 
-
-- 实例方法，静态方法与抽象方法
-
-- 方法重写和重载
-
-- 抽象类
-
-- 内部类
-
-- [接口](interface.md)
-
-- 可变参数方法
-
-- 重要关键字
-
-  - [finally](finally.md): 除直接退出虚拟机外，finally块的内容一定会被执行；finally中返回和异常抛出会导致try或catch中的返回和异常被忽略。
-
-  - this和super
-
-  - [static](static.md)
-
-  - final
-
-  - instanceof
-
-
 ### Java字符串
 
 - 常用方法
