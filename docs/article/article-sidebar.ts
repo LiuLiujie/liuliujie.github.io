@@ -9,7 +9,7 @@ export const javaSideBar = [
             {text: "Java 实例方法，静态方法与抽象方法"},
             {text: "Java 继承和多态", link:"java-inheritance-polymorphism.md"},
             {text: "Java 方法重写和重载"},
-            {text: "Java 抽象类"},
+            {text: "Java 抽象类", link: "java-abstract-class.md"},
             {text: "Java 接口", link: "interface.md"},
             {text: "Java 内部类"},
             {text: "Java 可变参数方法"},
@@ -17,7 +17,7 @@ export const javaSideBar = [
             {text: "Java this 和 super 关键字"},
             {text: "Java static 关键字", link: "static.md"},
             {text: "Java final 关键字"},
-            {text: "Java instanceof 关键字"}
+            {text: "Java instanceof 关键字", link :"java-instanceof.md"}
         ]
     },{
         text: "二、Java IO",
