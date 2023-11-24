@@ -12,3 +12,4 @@ article: false
 3. [Backtracking Algorithm 回溯法](backtracking.md)
 4. [Dichotomy 二分法](dichotomy.md)
 5. [Two pointers 双指针](two-pointers.md)
+6. [Linked List 链表问题](linked-list.md)
