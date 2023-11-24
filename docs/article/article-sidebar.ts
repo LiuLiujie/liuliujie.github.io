@@ -12,7 +12,7 @@ export const javaSideBar = [
         prefix: "JavaIO/",
         collapsible: true,
         children:[
-            {text: "2.1 Java IO 体系",link:""},
+            {text: "2.1 Java IO 体系简介",link:"README.md"},
             {text: "2.2 Java 传统IO (BIO)", link: "java-io.md"},
             {text: "2.3 Java NIO", link: "java-nio.md"},
             {text: "2.4 Java AIO", link: "java-aio.md"}
