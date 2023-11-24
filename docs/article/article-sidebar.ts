@@ -5,6 +5,7 @@ export const javaSideBar = [
         text: "一、Java 基础",
         collapsible: true,
         children:[
+            {text: "1.1 面向对象基础", link:"oop-basic.md"},
             "interface.md"
         ]
     },{
