@@ -1,3 +1,12 @@
+---
+category:
+- Computer Science
+- Programming Language
+
+tag: 
+- Java
+---
+
 # Java Concurrency 
 
 ## Java 多线程入门
