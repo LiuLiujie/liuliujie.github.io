@@ -1,16 +1,16 @@
 export const JavaSideBar = [
-    { text: "<<返回目录", link: "/blogs/"},
-    { text: "《Java学习路线(长期更新)》", link: "/article/java/"},
+    { text: "<< Catelog 目录", link: "/blogs/"},
+    { text: "《Java Roadmap 学习路线》", link: "/blogs/java/"},
     {
-        text: "Java 基础",
+        text: "Java Basic",
         collapsible: true,
         children:[
-            {text: "面向对象基础", link:"oop-basic.md"},
+            {text: "OOP Basic 面向对象基础", link:"oop-basic.md"},
             //{text: "Java 实例方法，静态方法与抽象方法"},
-            {text: "Java 继承和多态", link:"java-inheritance-polymorphism.md"},
+            {text: "Java Inher & Poly 继承和多态", link:"java-inheritance-polymorphism.md"},
             //{text: "Java 方法重写和重载"},
-            {text: "Java 抽象类", link: "java-abstract-class.md"},
-            {text: "Java 接口", link: "interface.md"},
+            {text: "Java Abstract Class 抽象类", link: "java-abstract-class.md"},
+            {text: "Java Interface 接口", link: "interface.md"},
             //{text: "Java 内部类"},
             //{text: "Java 可变参数方法"},
             {text: "Java finally 关键字", link: "finally.md"},
@@ -20,7 +20,7 @@ export const JavaSideBar = [
             {text: "Java instanceof 关键字", link :"java-instanceof.md"}
         ]
     },{
-        text: "Java 字符串",
+        text: "Java String 字符串",
         collapsible: true,
         children:[
             
@@ -30,25 +30,25 @@ export const JavaSideBar = [
         prefix: "JavaIO/",
         collapsible: true,
         children:[
-            {text: "Java IO 体系简介",link:"README.md"},
-            {text: "Java 传统IO (BIO)", link: "java-io.md"},
+            {text: "Java IO Structure 体系简介",link:"README.md"},
+            {text: "Java IO (BIO)", link: "java-io.md"},
             {text: "Java NIO", link: "java-nio.md"},
             {text: "Java AIO", link: "java-aio.md"}
         ]
     },{
-        text: "Java Collection (集合框架)",
+        text: "Java Collection 集合框架",
         collapsible: true,
         children:[
             "java-collection.md"
         ]
     },{
-        text: "Java Concurrency (并发编程)",
+        text: "Java Concurrency 并发编程",
         collapsible: true,
         children:[
             "java-concurrency.md"
         ]
     },{
-        text: "Java 反射与面向切面编程",
+        text: "Java Reflection & AOP 反射与面向切面编程",
         collapsible: true,
         children:[
 
@@ -57,20 +57,20 @@ export const JavaSideBar = [
 ]
 
 export const HPCSideBar = [
-    {text: "<<返回目录", link: "/blogs/"},
-    {text: "CUDA 教程", link: "cuda-tutorial-chinese/"},
+    {text: "<< Catelog 目录", link: "/blogs/"},
+    {text: "CUDA Tutorial 教程", link: "cuda-tutorial-chinese/"},
     {text: "OpenMPI", link: "MPI.md"},
-    {text: "面试题收集", link: "hpc-cpp-interview.md"}
+    {text: "Interviews 面试题收集", link: "hpc-cpp-interview.md"}
 ]
 
 export const AlgorithmSideBar = [
-    {text: "<<返回目录", link: "/blogs/"},
-    {text: "数据结构", children:[
+    {text: "<< Catelog 目录", link: "/blogs/"},
+    {text: "Data Structure 数据结构", children:[
         "data-structure.md",
         "binary-tree.md",
         "linked-list.md"
     ]},
-    {text: "算法", children:[
+    {text: "Algorithms 算法", children:[
         "dichotomy.md",
         "backtracking.md",
         "dp.md",
