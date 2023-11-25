@@ -1,5 +1,5 @@
-export const javaSideBar = [
-    { text: "<<返回所有文章", link: "/article/"},
+export const JavaSideBar = [
+    { text: "<<返回目录", link: "/blogs/"},
     { text: "《Java学习路线(长期更新)》", link: "/article/java/"},
     {
         text: "Java 基础",
@@ -54,4 +54,26 @@ export const javaSideBar = [
 
         ]
     }
+]
+
+export const HPCSideBar = [
+    {text: "<<返回目录", link: "/blogs/"},
+    {text: "CUDA 教程", link: "cuda-tutorial-chinese/"},
+    {text: "OpenMPI", link: "MPI.md"},
+    {text: "面试题收集", link: "hpc-cpp-interview.md"}
+]
+
+export const AlgorithmSideBar = [
+    {text: "<<返回目录", link: "/blogs/"},
+    {text: "数据结构", children:[
+        "data-structure.md",
+        "binary-tree.md",
+        "linked-list.md"
+    ]},
+    {text: "算法", children:[
+        "dichotomy.md",
+        "backtracking.md",
+        "dp.md",
+        "two-pointers.md"
+    ]}
 ]

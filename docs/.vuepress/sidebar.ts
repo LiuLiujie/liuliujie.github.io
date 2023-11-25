@@ -1,40 +1,10 @@
 import { sidebar } from "vuepress-theme-hope";
-import { javaSideBar } from "../article/article-sidebar";
+import { AlgorithmSideBar, HPCSideBar, JavaSideBar } from "../blogs/blogs-sidebar";
+import { catelog } from "../blogs/catelog";
 
 export const sidebarConfig = sidebar({
-    "/article/":[
-        { text: "All articles", link:""},
-        {
-            text: "计算机基础",
-            children:[]
-        },
-        {
-            text: "前端",
-            children:[
-
-            ]
-        },
-        {
-            text: "后端",
-            children: [
-                "java/"
-            ]
-        },
-        {
-            text: "DevOps",
-            prefix:"devops/",
-            children: [
-
-            ]
-        },
-        {
-            text: "高性能计算",
-            prefix: "gpgpu/",
-            children:[
-                {text: "CUDA 教程", link: "cuda-tutorial-chinese/"},
-                {text: "OpenMPI", link: "MPI.md"}
-            ]
-        },
-    ],
-    "/article/java/": javaSideBar
+    "/blogs/": catelog,
+    "/blogs/algorithm/": AlgorithmSideBar,
+    "/blogs/java/": JavaSideBar,
+    "/blogs/hpc/": HPCSideBar,
 });

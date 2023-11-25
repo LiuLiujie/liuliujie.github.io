@@ -13,6 +13,8 @@ tag:
 
 # MySQL
 
+
+
 ### [Window functions](https://dev.mysql.com/doc/refman/8.0/en/window-functions-usage.html)
 
 A window function performs an aggregate-like operation on a set of query rows. However, whereas an aggregate operation groups query rows into a single result row, a window function produces a result for each query row:
