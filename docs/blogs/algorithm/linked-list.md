@@ -253,3 +253,97 @@ public ListNode reverseList(ListNode head) {
 }
 ```
 
+### T23. [合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)
+
+给你一个链表数组，每个链表都已经按升序排列。
+
+请你将所有链表合并到一个升序链表中，返回合并后的链表。
+
+**示例 1：**
+
+```
+输入：lists = [[1,4,5],[1,3,4],[2,6]]
+输出：[1,1,2,3,4,4,5,6]
+解释：链表数组如下：
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+将它们合并到一个有序链表中得到。
+1->1->2->3->4->4->5->6
+```
+
+**示例 2：**
+
+```
+输入：lists = []
+输出：[]
+```
+
+**示例 3：**
+
+```
+输入：lists = [[]]
+输出：[]
+```
+
+**提示：**
+
+- `k == lists.length`
+- `0 <= k <= 10^4`
+- `0 <= lists[i].length <= 500`
+- `-10^4 <= lists[i][j] <= 10^4`
+- `lists[i]` 按 **升序** 排列
+- `lists[i].length` 的总和不超过 `10^4`
+
+#### Solution
+
+采用[优先队列](priority-queue.md)来解题：每次将最小元素出队，然后把该元素链接的下一元素入队。
+
+```java
+class Solution {
+    static Comparator<ListNode> cmp = new Comparator<>() {
+        public int compare(ListNode n1, ListNode n2) {
+            return n1.val - n2.val;
+        }
+    };
+
+    public ListNode mergeKLists(ListNode[] lists) {
+        Queue<ListNode> prique = new PriorityQueue<>(cmp);
+        int k = lists.length;
+        //检查为空的情况
+        if (k==0){
+            return null;
+        }
+        //把每一个链表的非空头节点入队, 并检查是否有可能是空链表
+        for (int i=0; i<k; i++){
+            if (lists[i] != null){
+                prique.offer(lists[i]);
+            }
+        }
+        if (prique.isEmpty()){
+            return null;
+        }
+
+        //记录首个节点
+        ListNode head = prique.poll();
+        if (head.next != null){
+            prique.offer(head.next);
+        }
+
+        //出队最大节点，再将该节点的下一个非空节点入队，重复直到队列为空
+        ListNode temp = head;
+        while (!prique.isEmpty()){
+            ListNode cur = prique.poll();
+            temp.next = cur;
+            if (cur.next != null){
+                prique.offer(cur.next);
+            }
+            temp = cur;
+        }
+        return head;
+    }
+}
+```
+
