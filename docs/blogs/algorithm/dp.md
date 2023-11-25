@@ -5,7 +5,7 @@ tag:
 - Leetcode
 - Dynamic Programming
 ---
-# Dynamic Programming
+# Dynamic Programming 动态规划
 
 This blog records the solutions I made for the Dynamic Programming questions from Leetcode.
 

@@ -6,7 +6,7 @@ tag:
 - Binary Tree
 ---
 
-# Binary Tree Questions
+# Binary Tree Questions 二叉树问题
 
 This article is concluded from this [article](https://labuladong.github.io/algo/di-ling-zh-bfe1b/dong-ge-da-334dd/) in Chinese.
 

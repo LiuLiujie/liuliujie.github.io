@@ -5,7 +5,7 @@ tag:
 - Data Structure
 ---
 
-# Data Structure Basic
+# Data Structure Basic 数据结构基础
 
 ## The storage of data
 
