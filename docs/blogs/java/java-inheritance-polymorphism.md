@@ -1,3 +1,11 @@
+---
+category:
+- Computer Science
+- Programming Language
+
+tag: 
+- Java
+---
 # Java 继承和多态
 
 

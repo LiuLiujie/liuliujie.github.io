@@ -1,3 +1,11 @@
+---
+category:
+- Computer Science
+- Database
+
+tag: 
+- MySQL
+---
 # MySQL 事务 (Transaction)
 
 ## 基本条件和语法

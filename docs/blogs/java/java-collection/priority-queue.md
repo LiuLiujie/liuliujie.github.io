@@ -1,3 +1,11 @@
+---
+category:
+- Computer Science
+- Programming Language
+
+tag: 
+- Java
+---
 #  PriorityQueue 优先队列
 
 PriorityQueue 是 Java 中的一个基于**优先级堆**的优先队列实现，它能够在 **O(log n) 的时间复杂度**内实现元素的插入和删除操作，并且能够自动维护队列中元素的优先级顺序。

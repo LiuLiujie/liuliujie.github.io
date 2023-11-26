@@ -1,3 +1,11 @@
+---
+category:
+- Computer Science
+- Programming Language
+
+tag: 
+- Java
+---
 # Static 关键字
 
 ### 静态代码块，构造函数和main函数的执行顺序

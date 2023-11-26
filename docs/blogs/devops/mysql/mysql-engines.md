@@ -1,4 +1,13 @@
-## MySQL 引擎 (Engines)
+---
+category:
+- Computer Science
+- Database
+
+tag: 
+- MySQL
+---
+
+# MySQL 引擎 (Engines)
 
 MySQL 中最常见的存储引擎有：InnoDB、MyISAM 和 MEMORY，其中 InnoDB 是 MySQL 5.1 之后默认的存储引擎，它支持事务、支持外键、支持崩溃修复和自增列，它的特点是稳定（能保证业务的完整性），但数据的读写效率一般。
 
