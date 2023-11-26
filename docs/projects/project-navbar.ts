@@ -15,7 +15,8 @@ export const projectNavbar = [
     }, {
         text: "Personal projects",
         children:[
-          "yj-music-player.md"
+          "yj-music-player.md",
+          {text: "API Monitor", link:"api-monitor/"}
         ]
     }
 ]
