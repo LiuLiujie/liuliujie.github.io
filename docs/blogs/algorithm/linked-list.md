@@ -299,7 +299,7 @@ public ListNode reverseList(ListNode head) {
 
 #### Solution
 
-采用[优先队列](priority-queue.md)来解题：每次将最小元素出队，然后把该元素链接的下一元素入队。
+采用 [优先队列](../java/java-collection/priority-queue.md) 来解题：每次将最小元素出队，然后把该元素链接的下一元素入队。
 
 ```java
 class Solution {
