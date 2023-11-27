@@ -77,3 +77,17 @@ export const AlgorithmSideBar = [
         "two-pointers.md"
     ]}
 ]
+
+export const DevOpsSiadebar = [
+    {text: "<< Catelog 目录", link: "/blogs/"},
+    {text: "SQL & MySQL", prefix: "mysql/", children:[
+        {text: "SQL Basic 基础", link:"sql.md"},
+        {text: "MySQL 学习路线", link:"README.md"},
+        "mysql-engines.md",
+        "mysql-btree.md",
+        {text: "SQL Leetcode Exercise 练习题", link: "sql-exercises.md"},
+    ]},
+    {text: "Redis", prefix: "redis/", children:[
+        "README.md"
+    ]}
+]

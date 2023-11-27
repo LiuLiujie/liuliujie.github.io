@@ -1,11 +1,9 @@
 ---
 category:
 - Computer Science
-- DevOps
-- Data Storage
+- Database
 
 tag: 
-- SQL
 - MySQL
 ---
 

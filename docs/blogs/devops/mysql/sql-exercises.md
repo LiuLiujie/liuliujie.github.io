@@ -1,13 +1,10 @@
 ---
 category:
 - Computer Science
-- DevOps
-- Data Storage
+- Database
 
 tag: 
-- SQL
 - MySQL
-- Leetcode
 ---
 
 
@@ -171,7 +168,7 @@ FROM Scores s1
 ORDER BY s1.score DESC
 ```
 
-Another way is to use [window functions](mysql.md#window-functions)
+Another way is to use [window functions](mysql-functions.md#Window-functions-窗口函数)
 
 `DENSE_RANK()`返回当前行在其分区中的排名，没有间隙。对等项被视为并列并获得相同的排名。此函数为对等组分配连续的排名；结果是大于一的组不产生不连续的排名号码。
 

@@ -1,21 +1,16 @@
 ---
 category:
 - Computer Science
-- DevOps
-- Data Storage
+- Database
 
 tag: 
-- SQL
 - MySQL
 ---
 
+# MySQL Functions 函数
 
 
-# MySQL
-
-
-
-### [Window functions](https://dev.mysql.com/doc/refman/8.0/en/window-functions-usage.html)
+## [Window functions 窗口函数](https://dev.mysql.com/doc/refman/8.0/en/window-functions-usage.html)
 
 A window function performs an aggregate-like operation on a set of query rows. However, whereas an aggregate operation groups query rows into a single result row, a window function produces a result for each query row:
 
@@ -25,5 +20,4 @@ A window function performs an aggregate-like operation on a set of query rows. H
 与聚合函数不同，聚合函数在所有查询后返回一个结果，窗口函数为每个查询创建一个结果。
 
 Exercises
-- [rank-scores](./sql-exercises.md#t178-rank-scores) (`DENCE_RANK()` function)
-
+- [rank-scores](sql-exercises.md#t178-rank-scores) (`DENCE_RANK()` function)
