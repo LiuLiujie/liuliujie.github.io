@@ -8,8 +8,6 @@ tag:
 ---
 # MySQL 索引 (B+ Tree) 
 
-[TOC]
-
 ## B+ Tree
 
 B Tree 指的是 Balance Tree，也就是平衡树。平衡树是一颗查找树，并且所有叶子节点位于同一层。
