@@ -96,6 +96,9 @@ export const DevOpsSiadebar = [
         {text: "SQL Leetcode Exercise 练习题", link: "sql-exercises.md"},
     ]},
     {text: "Redis", prefix: "redis/", collapsible: true, children:[
-        "README.md"
+        "README.md",
+        "data-structure.md",
+        "stream-message-queue.md",
+        "distributed-lock.md",
     ]}
 ]

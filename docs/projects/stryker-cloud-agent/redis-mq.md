@@ -1,6 +1,6 @@
 # Use Redis As MQ 使用Redis做消息队列
 
-[Redis做消息队列详解](../../blogs/devops/redis/message-queue.md)
+[Redis Stream 做消息队列详解](../../blogs/devops/redis/stream-message-queue.md)
 
 
 
