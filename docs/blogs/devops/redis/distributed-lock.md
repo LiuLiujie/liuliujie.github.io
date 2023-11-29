@@ -1,3 +1,13 @@
+---
+category:
+- Computer Science
+- Cache
+- Distributed Lock
+
+tag: 
+- Redis
+---
+
 # Redis Distributed Lock 实现分布式锁
 
 这种方法在Redis的[官方文档](https://redis.io/commands/set/)中作为案例提供。

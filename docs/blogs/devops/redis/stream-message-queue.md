@@ -1,4 +1,14 @@
-Redis Stream MQ 使用Redis Stream 作为消息队列
+---
+category:
+- Computer Science
+- Cache
+- Message Queue
+
+tag: 
+- Redis
+---
+
+# Redis Stream MQ 使用Redis Stream 作为消息队列
 
 Redis Stream 是 Redis 5.0 版本新增加的数据类型，Redis 专门为消息队列设计的数据类型。
 
