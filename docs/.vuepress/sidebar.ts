@@ -5,6 +5,7 @@ import { ApiMonitorSideBar } from "../projects/api-monitor/api-monitor-sidebar";
 
 export const sidebarConfig = sidebar({
     "/blogs/": catelog,
+    "/blogs/front-end": "structure",
     "/blogs/algorithm/": AlgorithmSideBar,
     "/blogs/java/": JavaSideBar,
     "/blogs/hpc/": HPCSideBar,
