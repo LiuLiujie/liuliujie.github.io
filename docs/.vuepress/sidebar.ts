@@ -10,5 +10,6 @@ export const sidebarConfig = sidebar({
     "/blogs/java/": JavaSideBar,
     "/blogs/hpc/": HPCSideBar,
     "/blogs/devops/": DevOpsSiadebar,
+    "/projects/stryker-cloud-agent/":"structure",
     "/projects/api-monitor": ApiMonitorSideBar
 });

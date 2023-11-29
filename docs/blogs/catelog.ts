@@ -9,8 +9,11 @@ export const catelog = [
     },
     {
         text: "Frontend",
+        prefix: "front-end/",
         children:[
-
+            //{text: "Framework", link: "framework/"},
+            {text: "Network", link: "network/"},
+            //{text: "Browser" ,link: "browser/"}
         ]
     },
     {
