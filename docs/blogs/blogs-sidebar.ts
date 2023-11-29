@@ -47,6 +47,14 @@ export const JavaSideBar = [
         children:[
             "java-concurrency.md"
         ]
+    },
+    {
+        text: "Java Utils 工具类",
+        collapsible: true,
+        prefix: "utils/",
+        children: [
+            "integer-hexconvert.md"
+        ]
     },{
         text: "Java Reflection & AOP 反射与面向切面编程",
         collapsible: true,
