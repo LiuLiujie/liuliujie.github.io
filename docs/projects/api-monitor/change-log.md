@@ -22,3 +22,12 @@
 ## 1.0.0-SHNAPSHOT (2023-12-01)
 
 - [feat] support SimpleHTTP POST monitor from request
+
+
+
+## 1.0.0-SHNAPSHOT (2023-12-02)
+
+
+- [feat\] Orchestrator support kafka as mq
+- [feat] Runner support kafka as mq, and return results back to orchestrator.
+- [docs] Update architecture figure
