@@ -28,7 +28,8 @@ export const catelog = [
         prefix:"devops/",
         children: [
             {text: "MySQL", link: "mysql/"},
-            {text: "Redis", link: "redis/"}
+            {text: "Redis", link: "redis/"},
+            {text: "Nacos", link: "nacos/"}
         ]
     },
     {

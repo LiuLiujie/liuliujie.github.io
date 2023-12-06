@@ -43,9 +43,16 @@ export const JavaSideBar = [
         ]
     },{
         text: "Java Concurrency 并发编程",
+        prefix: "concurrency/",
         collapsible: true,
         children:[
-            "java-concurrency.md"
+            {text: "《Java Concurrency Intro 多线程入门》", link: "java-concurrency.md"},
+            {text: "How Thread-safe 如何实现线程安全", link: "how-thread-safe.md"},
+            //
+            {text: "《Java Lock Intro 锁入门》", link: "java-lock-intro.md"},
+            //
+            {text: "《Java Concurrency Implementation 并发实现》", link: "java-concurrency-implementation.md"},
+            {text: "Three Ways for Creating Threads 创建线程的三种方式", link: "three-ways-for-creating-thread.md"}
         ]
     },
     {
@@ -100,5 +107,9 @@ export const DevOpsSiadebar = [
         "data-structure.md",
         "stream-message-queue.md",
         "distributed-lock.md",
+    ]},{text: "Nacos", prefix: "nacos/", collapsible: true, children:[
+        "README.md",
+        "startup.md",
+        "configuration-management.md"
     ]}
 ]
