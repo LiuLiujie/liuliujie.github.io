@@ -7,7 +7,7 @@ tag:
 - Springboot
 ---
 
-# Bean的声明周期
+# Bean的生命周期
 
 Bean 的生命周期概括起来就是 **4 个阶段**：
 
@@ -120,3 +120,4 @@ DisposableBean和destroy-method都是针对某个bean进行的自定义的销毁
 
 - 前一个通过实现DisposableBean接口的`void destroy()`方法进行处理
 - 而后者则需要通过xml文件进行配置来调用
+
