@@ -1,0 +1,83 @@
+---
+category: Computer Science
+tag:
+- Algorithms
+- Leetcode
+- Binary Search
+---
+
+# Binary Search 二分搜索
+
+二分搜索的关键在于：
+
+1. 搜索 `[0, len-1]` 这个闭区间，还是 `[0, len)` 这个开区间.
+2. 如果是闭区间，则循环条件使用 `while(left <= right)`；如果是开区间，则使用`while(left < right)`。很好理解，考虑列表只有一个因素的情况，闭区间是`[1,1]`需要等于搜索。
+3. 思考返回的问题：
+   - 如果元素是不重复的，可以直接`if(nums[mid] == target) return mid;`判断返回。
+   - 如果元素是重复的，需要考虑返回第一个重复元素还是最后一个重复元素的问题。
+     - 返回第一个：`if (nums[mid] == target) right = mid - 1;` 锁定左侧边界，返回值为：`return nums[left] == target ? left : -1;`
+     - 返回最后一个：`if (nums[mid] == target) left = mid + 1;` 锁定右侧边界，返回值为：`nums[right] == target ? right : -1;`
+
+```java
+int binary_search(int[] nums, int target) {
+    int left = 0, right = nums.length - 1; 
+    while(left <= right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] < target) {
+            left = mid + 1;
+        } else if (nums[mid] > target) {
+            right = mid - 1; 
+        } else if(nums[mid] == target) {
+            // 直接返回
+            return mid;
+        }
+    }
+    // 直接返回
+    return -1;
+}
+
+int left_bound(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] < target) {
+            left = mid + 1;
+        } else if (nums[mid] > target) {
+            right = mid - 1;
+        } else if (nums[mid] == target) {
+            // 别返回，锁定左侧边界
+            right = mid - 1;
+        }
+    }
+    // 判断 target 是否存在于 nums 中
+    if (left < 0 || left >= nums.length) {
+        return -1;
+    }
+    // 判断一下 nums[left] 是不是 target
+    return nums[left] == target ? left : -1;
+}
+
+int right_bound(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] < target) {
+            left = mid + 1;
+        } else if (nums[mid] > target) {
+            right = mid - 1;
+        } else if (nums[mid] == target) {
+            // 别返回，锁定右侧边界
+            left = mid + 1;
+        }
+    }
+    
+  	// 判断 target 是否存在于 nums 中
+    // 由于 while 的结束条件是 right == left - 1，且现在在求右边界
+    // 所以用 right 替代 left - 1 更好记
+    if (right < 0 || right >= nums.length) {
+        return -1;
+    }
+    return nums[right] == target ? right : -1;
+}
+```
+
