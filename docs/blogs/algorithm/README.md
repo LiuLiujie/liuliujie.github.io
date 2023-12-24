@@ -14,3 +14,6 @@ article: false
 5. [Dichotomy 二分法](dichotomy.md)
 6. [Two pointers 双指针](two-pointers.md)
 7. [Linked List 链表问题](linked-list.md)
+
+## Leetcode 经典类题
+1. [股票买卖问题 (动态规划)] (buy-and-sell-stock.md)
