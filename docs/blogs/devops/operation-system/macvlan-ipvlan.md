@@ -1,3 +1,11 @@
+---
+category: Computer Science, Network
+tag: 
+- Ubuntu
+---
+
+
+
 # Macvlan和IPvlan
 
 - Macvlan：在同一个物理网卡上配置多个 MAC 地址，即多个 sub interface，物理网卡称为parent interface。每个 interface 可以配置自己的 IP。**macvlan 本质上是一种网卡虚拟化技术(最大优点是性能极好)**
