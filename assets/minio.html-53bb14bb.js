@@ -1,0 +1,1 @@
+import{_ as o}from"./plugin-vue_export-helper-c27b6911.js";import{o as t,c as i,a as e,b as a}from"./app-9e8a13db.js";const n={},r=e("h1",{id:"minio",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#minio","aria-hidden":"true"},"#"),a(" Minio")],-1),c=[r];function s(_,d){return t(),i("div",null,c)}const l=o(n,[["render",s],["__file","minio.html.vue"]]);export{l as default};
